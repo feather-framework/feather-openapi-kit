@@ -11,10 +11,10 @@ extension Generic {
             [
                 .ref("genericPageLimit"),
                 .ref("genericPageOffset"),
-                .ref(ref.lowercased() + "ListSortBy"),
+                .ref(ref + "ListSortBy"),
                 .ref("genericSortOrder"),
                 .ref("genericFilterRelation"),
-                .ref(ref.lowercased() + "ListFilterKey"),
+                .ref(ref + "ListFilterKey"),
                 .ref("genericFilterMethod"),
                 .ref("genericFilterValue"),
             ]
