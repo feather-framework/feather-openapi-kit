@@ -8,6 +8,35 @@
 import OpenAPIKit
 import OpenAPIKitCore
 
+public extension OpenAPI.Content {
+
+    static func ref(_ key: Shared.ComponentKey) -> Self {
+        ref(key.rawValue)
+    }
+}
+
+public extension JSONSchema {
+
+    static func ref(_ key: Shared.ComponentKey) -> JSONSchema {
+        ref(key.rawValue)
+    }
+}
+
+public extension Either<OpenAPI.Reference<OpenAPI.Parameter>, OpenAPI.Parameter>
+{
+
+    static func ref(_ key: Shared.ComponentKey) -> Self {
+        ref(key.rawValue)
+    }
+}
+
+public extension Either<OpenAPI.Reference<OpenAPI.Response>, OpenAPI.Response> {
+
+    static func ref(_ key: Shared.ComponentKey) -> Self {
+        ref(key.rawValue)
+    }
+}
+
 public extension OpenAPI.Response.Map {
 
     static func list(

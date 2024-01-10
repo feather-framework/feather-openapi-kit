@@ -65,7 +65,7 @@ extension Generic {
             )
         }
 
-        public static func sortOrder(// defaultValue: String = "asc"
+        public static func sortOrder(  // defaultValue: String = "asc"
             ) -> OpenAPI.Parameter
         {
             let name = "sortOrder"
