@@ -42,26 +42,12 @@ extension OpenAPI.Document {
             paths: composer.paths(),
             components: .init(
                 schemas: composer.components(),
-                responses: [
-                    "204": .init(description: "No content"),
-                    "400": Generic.Responses.error("Bad request"),
-                    "401": Generic.Responses.error("Unauthorized"),
-                    "403": Generic.Responses.error("Forbidden"),
-                    "404": Generic.Responses.error("Not found"),
-                    "405": Generic.Responses.error("Method not allowed"),
-                    "406": Generic.Responses.error("Not acceptable"),
-                    "409": Generic.Responses.error("Conflict"),
-                    "410": Generic.Responses.error("Gone"),
-                    "415": Generic.Responses.error("Unsupported media type"),
-                    "422": Generic.Responses.error("Unprocessable Content"),
-                ],
+                responses: composer.responses(),
                 parameters: composer.parameters(),
                 examples: [:],
                 requestBodies: [:],
                 headers: [:],
-                securitySchemes: [
-                    "bearerAuth": Generic.SecuritySchemes.bearerToken()
-                ]
+                securitySchemes: composer.securitySchemes()
             ),
             tags: composer.tags()
         )

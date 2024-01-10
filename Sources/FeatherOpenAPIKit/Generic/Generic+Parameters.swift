@@ -18,9 +18,9 @@ extension Generic {
             [
                 Identifiers.Parameters.pageLimit.reference(),
                 Identifiers.Parameters.pageOffset.reference(),
-                //.ref(ref + "ListSortBy"),
+                .ref(ref + "ListSortBy"),
                 Identifiers.Parameters.sortOrder.reference(),
-                //.ref(ref + "ListFilterKey"),
+                .ref(ref + "ListFilterKey"),
                 Identifiers.Parameters.filterRelation.reference(),
                 Identifiers.Parameters.filterValue.reference(),
                 Identifiers.Parameters.filterMethod.reference(),

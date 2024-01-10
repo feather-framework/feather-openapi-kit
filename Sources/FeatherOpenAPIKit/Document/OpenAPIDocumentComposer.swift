@@ -34,4 +34,14 @@ extension OpenAPIDocumentComposer: OpenAPIDocumentComponent {
     public func parameters() -> OpenAPI.ComponentDictionary<OpenAPI.Parameter> {
         documentComponents.reduce([:], { $0 + $1.parameters() })
     }
+
+    public func responses() -> OpenAPI.ComponentDictionary<OpenAPI.Response> {
+        documentComponents.reduce([:], { $0 + $1.responses() })
+    }
+
+    public func securitySchemes()
+        -> OpenAPI.ComponentDictionary<OpenAPI.SecurityScheme>
+    {
+        documentComponents.reduce([:], { $0 + $1.securitySchemes() })
+    }
 }

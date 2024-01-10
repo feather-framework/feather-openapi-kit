@@ -13,4 +13,32 @@ public protocol OpenAPIDocumentComponent {
     func paths() -> OpenAPI.PathItem.Map
     func components() -> OpenAPI.ComponentDictionary<JSONSchema>
     func parameters() -> OpenAPI.ComponentDictionary<OpenAPI.Parameter>
+    func responses() -> OpenAPI.ComponentDictionary<OpenAPI.Response>
+    func securitySchemes()
+        -> OpenAPI.ComponentDictionary<OpenAPI.SecurityScheme>
+}
+
+public extension OpenAPIDocumentComponent {
+
+    func tags() -> [OpenAPI.Tag] {
+        []
+    }
+
+    func components() -> OpenAPI.ComponentDictionary<JSONSchema> {
+        [:]
+    }
+
+    func parameters() -> OpenAPI.ComponentDictionary<OpenAPI.Parameter> {
+        [:]
+    }
+
+    func responses() -> OpenAPI.ComponentDictionary<OpenAPI.Response> {
+        [:]
+    }
+
+    func securitySchemes()
+        -> OpenAPI.ComponentDictionary<OpenAPI.SecurityScheme>
+    {
+        [:]
+    }
 }
