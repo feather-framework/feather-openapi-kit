@@ -65,7 +65,7 @@ extension Generic {
             )
         }
 
-        public static func sortOrder(  //            defaultValue: String = "asc"
+        public static func sortOrder(// defaultValue: String = "asc"
             ) -> OpenAPI.Parameter
         {
             let name = "sortOrder"
@@ -75,7 +75,7 @@ extension Generic {
                 schema: .array(
                     minItems: 0,
                     maxItems: 10,
-                    items: .ref("GenericSortOrder")
+                    items: Identifiers.Parameters.sortOrder.reference()
                 ),
                 description: "The order of the sort keys in a list"
             )
@@ -85,7 +85,7 @@ extension Generic {
             .init(
                 name: "filterRelation",
                 context: .query,
-                schema: .ref("GenericFilterRelation"),
+                schema: Identifiers.Parameters.filterRelation.reference(),
                 description: "The filter relation between the items"
             )
         }
@@ -112,7 +112,7 @@ extension Generic {
                 schema: .array(
                     minItems: 0,
                     maxItems: 10,
-                    items: .ref("GenericFilterMethod")
+                    items: Identifiers.Parameters.filterMethod.reference()
                 ),
                 description: "The filter methods in a list"
             )

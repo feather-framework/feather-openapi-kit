@@ -8,18 +8,6 @@
 import OpenAPIKit
 import OpenAPIKitCore
 
-public extension Shared.ComponentKey {
-
-    func reference() -> OpenAPI.Content { .ref(self.rawValue) }
-    func reference() -> JSONSchema { .ref(self.rawValue) }
-    func reference() -> Either<
-        OpenAPI.Reference<OpenAPI.Parameter>, OpenAPI.Parameter
-    > { .ref(self.rawValue) }
-    func reference() -> Either<
-        OpenAPI.Reference<OpenAPI.Response>, OpenAPI.Response
-    > { .ref(self.rawValue) }
-}
-
 public extension OpenAPI.Response.Map {
 
     static func list(
@@ -53,4 +41,16 @@ public extension OpenAPI.Response.Map {
     ) -> Self {
         patch(key.rawValue)
     }
+}
+
+public extension Shared.ComponentKey {
+
+    func reference() -> OpenAPI.Content { .ref(self.rawValue) }
+    func reference() -> JSONSchema { .ref(self.rawValue) }
+    func reference() -> Either<
+        OpenAPI.Reference<OpenAPI.Parameter>, OpenAPI.Parameter
+    > { .ref(self.rawValue) }
+    func reference() -> Either<
+        OpenAPI.Reference<OpenAPI.Response>, OpenAPI.Response
+    > { .ref(self.rawValue) }
 }

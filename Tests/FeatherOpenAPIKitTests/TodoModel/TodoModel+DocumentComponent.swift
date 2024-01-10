@@ -13,12 +13,14 @@ extension TodoModel {
 
     struct DocumentComponent: OpenAPIDocumentComponent {
 
+        let identifier = "TodoModel"
+
         init() {}
 
         func tags() -> [OpenAPI.Tag] {
             [
                 .init(
-                    name: "Todo",
+                    name: Identifiers.Tags.id,
                     description: "Everything about todo items..."
                 )
             ]
@@ -43,35 +45,42 @@ extension TodoModel {
 
         func components() -> OpenAPI.ComponentDictionary<JSONSchema> {
             [
-                "TodoModelReference": Components.reference,
-                "TodoModelDetail": Components.detail,
-                "TodoModelCreate": Components.create,
-                "TodoModelUpdate": Components.update,
-                "TodoModelPatch": Components.patch,
-                "TodoModelList": Generic.Components.list("TodoModel"),
-                "TodoModelListItem": Components.listItem,
-                "TodoModelListSortBy": Components.listSortBy,
-                "TodoModelListSortItem": Generic.Components.listSortItem(
-                    "TodoModel"
+                Identifiers.Components.reference: Components.reference,
+                Identifiers.Components.detail: Components.detail,
+                Identifiers.Components.create: Components.create,
+                Identifiers.Components.update: Components.update,
+                Identifiers.Components.patch: Components.patch,
+                Identifiers.Components.list: Generic.Components.list(
+                    identifier
                 ),
-                "TodoModelListFilter": Generic.Components.listFilter(
-                    "TodoModel"
-                ),
-                "TodoModelListFilterKey": Components.listFilterKey,
-                "TodoModelListFilterQueryItem": Generic.Components
+                Identifiers.Components.listItem: Components.listItem,
+                Identifiers.Components.listSortBy: Components.listSortBy,
+                Identifiers.Components.listSortItem: Generic.Components
+                    .listSortItem(
+                        identifier
+                    ),
+                Identifiers.Components.listFilter: Generic.Components
+                    .listFilter(
+                        identifier
+                    ),
+                Identifiers.Components.listFilterKey: Components.listFilterKey,
+                Identifiers.Components.listFilterQueryItem: Generic.Components
                     .listFilterQueryItem(
-                        "TodoModel"
+                        identifier
                     ),
             ]
         }
 
         func parameters() -> OpenAPI.ComponentDictionary<OpenAPI.Parameter> {
             [
-                "TodoModelId": Parameters.id,
-                "TodoModelListSortBy": Generic.Parameters.sortBy("TodoModel"),
-                "TodoModelListFilterKey": Generic.Parameters.filterKey(
-                    "TodoModel"
+                Identifiers.Parameters.id: Parameters.id,
+                Identifiers.Parameters.listSortBy: Generic.Parameters.sortBy(
+                    identifier
                 ),
+                Identifiers.Parameters.listFilterKey: Generic.Parameters
+                    .filterKey(
+                        identifier
+                    ),
             ]
         }
     }

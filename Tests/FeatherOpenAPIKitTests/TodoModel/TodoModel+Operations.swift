@@ -21,7 +21,7 @@ extension TodoModel {
                 description: "List available todo items",
                 operationId: "listTodos",
                 parameters: Generic.Parameters.list("TodoModel"),
-                responses: .list("TodoModelList"),
+                responses: .list(Identifiers.Components.list),
                 security: Generic.Security.bearerAuth
             )
         }
@@ -39,7 +39,7 @@ extension TodoModel {
                         .json: Identifiers.Components.create.reference()
                     ]
                 ),
-                responses: .create("TodoModelDetail"),
+                responses: .create(Identifiers.Components.detail),
                 security: Generic.Security.bearerAuth
             )
         }
@@ -87,7 +87,7 @@ extension TodoModel {
                 parameters: [
                     Identifiers.Parameters.id.reference()
                 ],
-                responses: .detail("TodoModelDetail"),
+                responses: .detail(Identifiers.Components.detail),
                 security: Generic.Security.bearerAuth
             )
         }
@@ -108,7 +108,7 @@ extension TodoModel {
                         .json: Identifiers.Components.update.reference()
                     ]
                 ),
-                responses: .update("TodoModelDetail"),
+                responses: .update(Identifiers.Components.detail),
                 security: Generic.Security.bearerAuth
             )
         }
@@ -129,7 +129,7 @@ extension TodoModel {
                         .json: Identifiers.Components.patch.reference()
                     ]
                 ),
-                responses: .patch("TodoModelDetail"),
+                responses: .patch(Identifiers.Components.detail),
                 security: Generic.Security.bearerAuth
             )
         }
