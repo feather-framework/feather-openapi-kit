@@ -1,3 +1,10 @@
+//
+//  File.swift
+//
+//
+//  Created by Tibor Bodecs on 10/01/2024.
+//
+
 import Foundation
 import OpenAPIKit
 
@@ -9,14 +16,14 @@ extension Generic {
             _ ref: String
         ) -> OpenAPI.Parameter.Array {
             [
-                .ref("genericPageLimit"),
-                .ref("genericPageOffset"),
-                .ref(ref + "ListSortBy"),
-                .ref("genericSortOrder"),
-                .ref("genericFilterRelation"),
-                .ref(ref + "ListFilterKey"),
-                .ref("genericFilterMethod"),
-                .ref("genericFilterValue"),
+                Identifiers.Parameters.pageLimit.reference(),
+                Identifiers.Parameters.pageOffset.reference(),
+                //.ref(ref + "ListSortBy"),
+                Identifiers.Parameters.sortOrder.reference(),
+                //.ref(ref + "ListFilterKey"),
+                Identifiers.Parameters.filterRelation.reference(),
+                Identifiers.Parameters.filterValue.reference(),
+                Identifiers.Parameters.filterMethod.reference(),
             ]
         }
 

@@ -1,3 +1,10 @@
+//
+//  File.swift
+//
+//
+//  Created by Tibor Bodecs on 10/01/2024.
+//
+
 import Foundation
 import OpenAPIKit
 
@@ -7,10 +14,12 @@ extension Generic {
 
         public static var healthCheck: OpenAPI.Operation {
             .init(
-                tags: ["Generic"],
-                summary: "Generic health check",
+                tags: [
+                    Identifiers.Tags.id
+                ],
+                summary: "Health check",
                 description: "Use this endpoint for health checks",
-                operationId: #function,
+                operationId: "healthCheck",
                 responses: [
                     200: .response(description: "Ok")
                 ]

@@ -13,7 +13,12 @@ extension OpenAPI.Document {
 
     static var definition: OpenAPI.Document {
 
-        .init(
+        let composer = OpenAPIDocumentComposer([
+            Generic.DocumentComponent(),
+            TodoModel.DocumentComponent(),
+        ])
+
+        return .init(
             info: .init(
                 title: "Example API",
                 description: "Example API",
@@ -34,11 +39,9 @@ extension OpenAPI.Document {
                     description: "live"
                 ),
             ],
-            paths:
-                Generic.Document.paths() + Tag.Document.paths(),
+            paths: composer.paths(),
             components: .init(
-                schemas:
-                    Generic.Document.components() + Tag.Document.components(),
+                schemas: composer.components(),
                 responses: [
                     "204": .init(description: "No content"),
                     "400": Generic.Responses.error("Bad request"),
@@ -52,8 +55,7 @@ extension OpenAPI.Document {
                     "415": Generic.Responses.error("Unsupported media type"),
                     "422": Generic.Responses.error("Unprocessable Content"),
                 ],
-                parameters:
-                    Generic.Document.parameters() + Tag.Document.parameters(),
+                parameters: composer.parameters(),
                 examples: [:],
                 requestBodies: [:],
                 headers: [:],
@@ -61,8 +63,7 @@ extension OpenAPI.Document {
                     "bearerAuth": Generic.SecuritySchemes.bearerToken()
                 ]
             ),
-            tags:
-                Generic.Document.tags() + Tag.Document.tags()
+            tags: composer.tags()
         )
     }
 }
