@@ -1,4 +1,10 @@
-import Foundation
+//
+//  File.swift
+//
+//
+//  Created by Tibor Bodecs on 10/01/2024.
+//
+
 import OpenAPIKit
 
 extension Generic {
@@ -24,7 +30,8 @@ extension Generic {
                         required: true,
                         minItems: 0,
                         maxItems: 1000,
-                        items: .ref("GenericErrorResponseDetail")
+                        items: Identifiers.Components.errorResponseDetail
+                            .reference()
                     ),
                 ]
             )

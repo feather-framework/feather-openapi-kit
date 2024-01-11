@@ -13,7 +13,12 @@ extension OpenAPI.Document {
 
     static var definition: OpenAPI.Document {
 
-        .init(
+        let composer = OpenAPIDocumentComposer([
+            Generic.DocumentComponent(),
+            TodoModel.DocumentComponent(),
+        ])
+
+        return .init(
             info: .init(
                 title: "Example API",
                 description: "Example API",
@@ -34,35 +39,17 @@ extension OpenAPI.Document {
                     description: "live"
                 ),
             ],
-            paths:
-                Generic.Document.paths() + Tag.Document.paths(),
+            paths: composer.paths(),
             components: .init(
-                schemas:
-                    Generic.Document.components() + Tag.Document.components(),
-                responses: [
-                    "204": .init(description: "No content"),
-                    "400": Generic.Responses.error("Bad request"),
-                    "401": Generic.Responses.error("Unauthorized"),
-                    "403": Generic.Responses.error("Forbidden"),
-                    "404": Generic.Responses.error("Not found"),
-                    "405": Generic.Responses.error("Method not allowed"),
-                    "406": Generic.Responses.error("Not acceptable"),
-                    "409": Generic.Responses.error("Conflict"),
-                    "410": Generic.Responses.error("Gone"),
-                    "415": Generic.Responses.error("Unsupported media type"),
-                    "422": Generic.Responses.error("Unprocessable Content"),
-                ],
-                parameters:
-                    Generic.Document.parameters() + Tag.Document.parameters(),
+                schemas: composer.components(),
+                responses: composer.responses(),
+                parameters: composer.parameters(),
                 examples: [:],
                 requestBodies: [:],
                 headers: [:],
-                securitySchemes: [
-                    "bearerAuth": Generic.SecuritySchemes.bearerToken()
-                ]
+                securitySchemes: composer.securitySchemes()
             ),
-            tags:
-                Generic.Document.tags() + Tag.Document.tags()
+            tags: composer.tags()
         )
     }
 }

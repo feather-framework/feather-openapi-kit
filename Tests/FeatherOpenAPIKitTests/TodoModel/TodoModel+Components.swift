@@ -1,8 +1,14 @@
-import Foundation
+//
+//  File.swift
+//
+//
+//  Created by Tibor Bodecs on 10/01/2024.
+//
+
 import FeatherOpenAPIKit
 import OpenAPIKit
 
-extension Tag {
+extension TodoModel {
 
     enum Components {
 
