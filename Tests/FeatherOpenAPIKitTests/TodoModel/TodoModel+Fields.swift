@@ -12,19 +12,6 @@ extension TodoModel {
 
     enum Fields {
 
-        static func id(
-            description: String = "Unique identifier"
-        ) -> JSONSchema {
-            .string(
-                format: .uuid,
-                required: true,
-                description: description,
-                examples: [
-                    "7B8154FE-C507-4810-8EAF-5AB30B90EC89"
-                ]
-            )
-        }
-
         static func name(
             required: Bool = true
         ) -> JSONSchema {

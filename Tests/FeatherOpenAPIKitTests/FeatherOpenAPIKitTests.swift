@@ -23,6 +23,7 @@ final class FeatherOpenAPIKitTests: XCTestCase {
             .joined(separator: "/")
 
         let path = "/\(basePath)/openapi.yaml"
+        print(path)
 
         try yaml.write(
             to: URL(fileURLWithPath: path),
