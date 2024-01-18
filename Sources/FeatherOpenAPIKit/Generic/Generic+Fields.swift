@@ -25,13 +25,17 @@ extension Generic {
         }
 
         public static func uuid(
-            description: String = "Unique identifier"
+            description: String = "Unique identifier",
+            numberOfExamples: Int = 1
         ) -> JSONSchema {
             .string(
                 format: .uuid,
                 required: true,
                 description: description,
-                examples: ["80AC5349-BCD6-4C36-AFBF-AAE6AD9AAB98"]
+                examples: (0..<numberOfExamples)
+                    .map { _ in
+                        .init(stringLiteral: UUID().uuidString)
+                    }
             )
         }
 

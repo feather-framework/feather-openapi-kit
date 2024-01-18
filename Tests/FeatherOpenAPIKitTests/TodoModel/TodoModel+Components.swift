@@ -15,7 +15,7 @@ extension TodoModel {
         static var reference: JSONSchema {
             .object(
                 properties: [
-                    "id": Fields.id(),
+                    "id": Generic.Fields.uuid(numberOfExamples: 10),
                     "name": Fields.name(),
                 ]
             )
@@ -24,7 +24,7 @@ extension TodoModel {
         static var listItem: JSONSchema {
             .object(
                 properties: [
-                    "id": Fields.id(),
+                    "id": Generic.Fields.uuid(numberOfExamples: 10),
                     "name": Fields.name(),
                 ]
             )
@@ -49,7 +49,7 @@ extension TodoModel {
         static var detail: JSONSchema {
             .object(
                 properties: [
-                    "id": Fields.id(),
+                    "id": Generic.Fields.uuid(numberOfExamples: 10),
                     "name": Fields.name(),
                 ]
             )

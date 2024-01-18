@@ -17,7 +17,7 @@ extension TodoModel {
             .init(
                 name: "todoId",
                 context: .path,
-                schema: Fields.id()
+                schema: Generic.Fields.uuid(numberOfExamples: 10)
             )
         }
     }
