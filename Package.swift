@@ -29,9 +29,6 @@ let package = Package(
             dependencies: [
                 .target(name: "FeatherOpenAPIKit"),
                 .product(name: "Yams", package: "Yams"),
-            ],
-            exclude: [
-                "openapi.yaml"
             ]
         ),
     ]
