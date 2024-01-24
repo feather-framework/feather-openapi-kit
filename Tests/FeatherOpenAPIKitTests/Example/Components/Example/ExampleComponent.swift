@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Tibor Bodecs on 20/01/2024.
 //
@@ -8,57 +8,56 @@
 import FeatherOpenAPIKit
 
 public struct ExampleComponent: Component {
-    
-//    public let examples: [Example]
+
+    //    public let examples: [Example]
     public let fields: [Field]
     public let schemas: [Schema]
-    
+
     public let parameters: [Parameter]
     public let headers: [Header]
     public let requestBodies: [RequestBody]
     public let securitySchemes: [SecurityScheme]
 
     public let responses: [Response]
-    
+
     public let tags: [Tag]
     public let operations: [Operation]
     public let pathItems: [PathItem]
-    
-    
+
     public init() {
-        
-//        self.examples = [
-//        
-//        ]
+
+        //        self.examples = [
+        //
+        //        ]
         self.fields = [
-            Components.Fields.example,
+            ExampleField()
         ]
         self.schemas = [
-            Components.Schemas.example,
+            ExampleSchema()
         ]
 
         self.parameters = [
-            Components.Parameters.example,
+            ExampleParameter()
         ]
         self.headers = [
-            Components.Headers.example,
+            ExampleHeader()
         ]
         self.requestBodies = [
-            Components.RequestBodies.example,
+            ExampleRequestBody()
         ]
         self.securitySchemes = [
-            Components.SecuritySchemes.example,
+            ExampleSecurityScheme()
         ]
-        
+
         self.responses = [
-            Components.Responses.example,
+            ExampleResponse()
         ]
-        
+
         self.tags = [
-            Components.Tags.example,
+            ExampleTag()
         ]
         self.operations = [
-            Components.Operations.example,
+            ExampleOperation()
         ]
         self.pathItems = [
             ExamplePathItem()

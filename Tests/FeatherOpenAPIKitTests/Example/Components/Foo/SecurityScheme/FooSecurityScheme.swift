@@ -1,16 +1,12 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Tibor Bodecs on 20/01/2024.
 //
 
 import FeatherOpenAPIKit
 import OpenAPIKit
-
-public extension Components.SecuritySchemes {
-    static var foo: FooSecurityScheme { .init() }
-}
 
 public struct FooSecurityScheme: SecurityScheme {
 

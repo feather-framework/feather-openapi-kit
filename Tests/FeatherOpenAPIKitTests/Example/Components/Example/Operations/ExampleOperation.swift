@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Tibor Bodecs on 20/01/2024.
 //
@@ -8,16 +8,12 @@
 import FeatherOpenAPIKit
 import OpenAPIKit
 
-public extension Components.Operations {
-    static var example: ExampleOperation { .init() }
-}
-
 public struct ExampleOperation: Operation {
-    
+
     public func openAPIOperation() -> OpenAPI.Operation {
         .init(
             tags: [
-                Components.Tags.example.id,
+                ExampleTag().id
             ],
             summary: "List profiles",
             description: """
@@ -25,18 +21,18 @@ public struct ExampleOperation: Operation {
                 """,
             operationId: id,
             parameters: [
-                Components.Parameters.example.reference(),
+                ExampleParameter().reference()
             ],
             responses: [
                 200: .response(
                     description: "Ok",
                     content: [
-                        .json: Components.Schemas.foo.reference(),
+                        .json: FooSchema().reference()
                     ]
                 ),
-                400: Components.Responses.example.reference()
+                400: ExampleResponse().reference(),
             ],
-            security: Components.SecuritySchemes.example.reference()
+            security: ExampleSecurityScheme().reference()
         )
     }
 }

@@ -1,16 +1,12 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Tibor Bodecs on 20/01/2024.
 //
 
 import FeatherOpenAPIKit
 import OpenAPIKit
-
-public extension Components.SecuritySchemes {
-    static var example: ExampleSecurityScheme { .init() }
-}
 
 public struct ExampleSecurityScheme: SecurityScheme {
 
@@ -24,5 +20,4 @@ public struct ExampleSecurityScheme: SecurityScheme {
         )
     }
 
-    
 }
