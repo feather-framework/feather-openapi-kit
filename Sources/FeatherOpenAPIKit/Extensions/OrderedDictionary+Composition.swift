@@ -16,12 +16,4 @@ public extension OrderedDictionary {
         }
         return result
     }
-    
-//    static func + (lhs: Self, rhs: Dictionary<Key, Value>) -> Self {
-//        var result = lhs
-//        for key in rhs.keys {
-//            result[key] = rhs[key]
-//        }
-//        return result
-//    }
 }

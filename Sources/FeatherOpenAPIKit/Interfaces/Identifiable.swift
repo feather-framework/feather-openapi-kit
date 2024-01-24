@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Tibor Bodecs on 20/01/2024.
 //
@@ -12,7 +12,11 @@ public protocol Identifiable {
 }
 
 public extension Identifiable {
-    var id: String { String(describing: type(of: self)) }
+
+    var id: String {
+        String(reflecting: Self.self)
+            .replacingOccurrences(of: ".", with: "")
+    }
 }
 
 public extension Identifiable {

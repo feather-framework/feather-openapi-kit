@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Tibor Bodecs on 20/01/2024.
 //
@@ -9,16 +9,16 @@ import FeatherOpenAPIKit
 import OpenAPIKit
 
 struct ExampleDocument: Document {
-    
+
     let components: [Component]
-    
+
     init() {
         self.components = [
             ExampleComponent(),
             FooComponent(),
         ]
     }
-    
+
     func openAPIDocument() -> OpenAPI.Document {
         composedDocument(
             info: .init(
@@ -37,7 +37,7 @@ struct ExampleDocument: Document {
                 .init(
                     url: .init(string: "http://localhost:8080")!,
                     description: "dev"
-                ),
+                )
             ]
         )
     }

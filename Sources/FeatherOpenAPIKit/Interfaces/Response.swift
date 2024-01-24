@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Tibor Bodecs on 20/01/2024.
 //
@@ -13,7 +13,9 @@ public protocol Response: Identifiable {
 
 public extension Response {
 
-    func reference() -> Either<OpenAPI.Reference<OpenAPI.Response>, OpenAPI.Response> {
+    func reference() -> Either<
+        OpenAPI.Reference<OpenAPI.Response>, OpenAPI.Response
+    > {
         .reference(.component(named: id))
     }
 }
