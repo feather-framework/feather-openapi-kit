@@ -14,8 +14,8 @@ struct ExampleDocument: Document {
 
     init() {
         self.components = [
-            Example.Model.self,
-//            FooComponent(),
+            Example.Model.self
+            //            FooComponent(),
         ]
     }
 

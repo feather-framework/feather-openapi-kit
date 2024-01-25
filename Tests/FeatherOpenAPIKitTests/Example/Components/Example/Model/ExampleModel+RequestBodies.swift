@@ -9,14 +9,10 @@ import FeatherOpenAPIKit
 import OpenAPIKit
 
 extension Example.Model {
-    
-    // TODO: macro generated code
-    static let requestBodies: [RequestBody.Type] = [
-        RequestBodies.Create.self,
-    ]
-    
+
+    @ComponentCollection
     enum RequestBodies {
-        
+
         struct Create: JSONBody {
             static let description = "Create example"
             static let content: OpenAPI.Content = Schemas.Create.reference()

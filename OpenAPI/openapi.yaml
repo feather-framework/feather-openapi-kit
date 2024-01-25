@@ -54,11 +54,11 @@ components:
       format: uuid
       description: Unique system variable identifier
       examples:
-      - B9B4017A-20D2-4932-9D17-8E491C653494
-      - E99E900B-B983-45B3-AC83-26C0E1E074BE
-      - BD491B50-4546-4C62-97EA-BDBAA8313F38
-      - FC4C9591-8CC5-49ED-9E14-5F044E14B796
-      - A7119ECD-7721-4999-A39C-5DA573C5DC4D
+      - B69B08A1-3B98-4E07-BBB8-4FA8507B1325
+      - E3F898CA-F5E7-4584-B6AC-E45998E59A5E
+      - D941EF68-C323-4C98-87AE-6F96E172083F
+      - E2C837BA-9F01-4D96-A6F8-3F21D7C18AEA
+      - 416B57AE-5C2A-41EA-B182-B136E7467EA8
     FeatherOpenAPIKitTestsExampleModelFieldsKey:
       type: string
       description: Key of the system variable

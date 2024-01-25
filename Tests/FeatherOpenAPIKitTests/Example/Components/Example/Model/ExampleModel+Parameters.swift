@@ -9,14 +9,10 @@ import FeatherOpenAPIKit
 import OpenAPIKit
 
 extension Example.Model {
-    
-    // TODO: macro generated code
-    static let parameters: [Parameter.Type] = [
-        Parameters.Id.self,
-    ]
-    
+
+    @ComponentCollection
     enum Parameters {
-        
+
         struct Id: PathParameter {
             static let name = "id"
             static let description = "Example parameter"
