@@ -8,17 +8,17 @@
 import OpenAPIKit
 
 public protocol Identifiable {
-    var id: String { get }
+    static var id: String { get }
 }
 
 public extension Identifiable {
 
-    var id: String {
-        String(reflecting: Self.self)
+    static var id: String {
+        String(reflecting: self)
             .replacingOccurrences(of: ".", with: "")
     }
 }
 
 public extension Identifiable {
-    var componentKey: OpenAPI.ComponentKey { .init(stringLiteral: id) }
+    static var componentKey: OpenAPI.ComponentKey { .init(stringLiteral: id) }
 }

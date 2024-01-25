@@ -8,139 +8,110 @@ info:
     email: info@binarybirds.com
   version: 1.0.0
 tags:
-- name: FeatherOpenAPIKitTestsExampleTag
-  description: ''
-- name: FeatherOpenAPIKitTestsFooTag
+- name: Model
   description: ''
 servers:
 - url: http://localhost:8080
   description: dev
 paths:
-  /example/{exampleId}:
-    summary: path summary
-    description: path description
-    parameters:
-    - $ref: '#/components/parameters/FeatherOpenAPIKitTestsExampleParameter'
-    get:
+  /example/models:
+    post:
       tags:
-      - FeatherOpenAPIKitTestsExampleTag
-      summary: List profiles
-      description: List available profiles
-      operationId: FeatherOpenAPIKitTestsExampleOperation
-      parameters:
-      - $ref: '#/components/parameters/FeatherOpenAPIKitTestsExampleParameter'
+      - Model
+      summary: Create example
+      description: Create example detail
+      operationId: CreateOperationsModelExampleFeatherOpenAPIKitTests
+      requestBody:
+        description: Create example
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleModelSchemasCreate'
+        required: true
       responses:
         200:
-          description: Ok
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FeatherOpenAPIKitTestsFooSchema'
-        400:
-          $ref: '#/components/responses/FeatherOpenAPIKitTestsExampleResponse'
+          $ref: '#/components/responses/FeatherOpenAPIKitTestsExampleModelResponsesDetail'
       security:
-      - FeatherOpenAPIKitTestsExampleSecurityScheme: []
-  /foo/{fooId}:
-    summary: path summary
-    description: path description
+      - FeatherOpenAPIKitTestsExampleModelSecuritySchemesBearerToken: []
+  /example/models/{id}:
     parameters:
-    - $ref: '#/components/parameters/FeatherOpenAPIKitTestsFooParameter'
+    - $ref: '#/components/parameters/FeatherOpenAPIKitTestsExampleModelParametersId'
     get:
       tags:
-      - FeatherOpenAPIKitTestsFooField
-      summary: List profiles
-      description: List available profiles
-      operationId: FeatherOpenAPIKitTestsFooOperation
-      parameters:
-      - $ref: '#/components/parameters/FeatherOpenAPIKitTestsFooParameter'
+      - Model
+      summary: List example
+      description: List example detail
+      operationId: GetOperationsModelExampleFeatherOpenAPIKitTests
       responses:
         200:
-          description: Ok
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FeatherOpenAPIKitTestsFooSchema'
-        400:
-          $ref: '#/components/responses/FeatherOpenAPIKitTestsFooResponse'
-      security: []
+          $ref: '#/components/responses/FeatherOpenAPIKitTestsExampleModelResponsesDetail'
+      security:
+      - FeatherOpenAPIKitTestsExampleModelSecuritySchemesBearerToken: []
 components:
   schemas:
-    FeatherOpenAPIKitTestsExampleField:
+    FeatherOpenAPIKitTestsExampleModelFieldsId:
       type: string
-    FeatherOpenAPIKitTestsExampleSchema:
+      format: uuid
+      description: Unique system variable identifier
+      examples:
+      - 4B497957-88D3-4BF8-8030-62E2D92028E4
+      - 3237E470-2C0E-44DF-8C89-92355A0809E6
+      - E2022792-163A-4F6E-BC10-9B276A48D257
+      - F9A1C2D8-837A-4625-97AF-74186B470F7C
+      - EA8B5792-2D8D-4190-86D2-CEFDAEE6B896
+    FeatherOpenAPIKitTestsExampleModelFieldsKey:
+      type: string
+      description: Key of the system variable
+      examples:
+      - systemEmailAddress
+    FeatherOpenAPIKitTestsExampleModelSchemasCreate:
       type: object
       properties:
-        example:
-          $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleField'
+        key:
+          $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleModelFieldsKey'
       required:
-      - example
-    FeatherOpenAPIKitTestsFooField:
-      type: string
-    FeatherOpenAPIKitTestsFooSchema:
+      - key
+    FeatherOpenAPIKitTestsExampleModelSchemasDetail:
       type: object
       properties:
-        foo:
-          $ref: '#/components/schemas/FeatherOpenAPIKitTestsFooField'
-        bar:
-          $ref: '#/components/schemas/FeatherOpenAPIKitTestsFooField'
-        baz:
-          type: string
+        id:
+          $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleModelFieldsId'
+        key:
+          $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleModelFieldsKey'
       required:
-      - bar
-      - baz
+      - id
+      - key
   responses:
-    FeatherOpenAPIKitTestsExampleResponse:
-      description: lorem ipsum
+    FeatherOpenAPIKitTestsExampleModelResponsesDetail:
+      description: Example
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleSchema'
-    FeatherOpenAPIKitTestsFooResponse:
-      description: lorem ipsum
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/FeatherOpenAPIKitTestsFooSchema'
+            $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleModelSchemasDetail'
   parameters:
-    FeatherOpenAPIKitTestsExampleParameter:
-      name: exampleId
+    FeatherOpenAPIKitTestsExampleModelParametersId:
+      name: id
       in: path
       required: true
       schema:
-        $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleSchema'
-      description: example parameter
-    FeatherOpenAPIKitTestsFooParameter:
-      name: fooId
-      in: path
-      required: true
-      schema:
-        $ref: '#/components/schemas/FeatherOpenAPIKitTestsFooField'
+        $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleModelFieldsId'
+      description: Example parameter
   requestBodies:
-    FeatherOpenAPIKitTestsExampleRequestBody:
-      description: Example request body
+    FeatherOpenAPIKitTestsExampleModelRequestBodiesCreate:
+      description: Create example
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleSchema'
+            $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleModelSchemasCreate'
       required: true
   headers:
-    X-Example-Header:
+    X-Custom-Header:
       schema:
         type: string
-        title: Example header
-        description: test
-    X-Foo-Header:
-      schema:
-        type: integer
-        title: Foo header
-        description: test
+        title: Custom header
+        description: custom header description
   securitySchemes:
-    FeatherOpenAPIKitTestsExampleSecurityScheme:
-      description: Authorization header using a Bearer token
-      type: http
-      scheme: bearer
-      bearerFormat: token
-    FeatherOpenAPIKitTestsFooSecurityScheme:
+    FeatherOpenAPIKitTestsExampleModelSecuritySchemesBearerToken:
       description: Authorization header using a Bearer token
       type: http
       scheme: bearer

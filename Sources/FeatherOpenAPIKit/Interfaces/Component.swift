@@ -7,37 +7,37 @@
 
 public protocol Component {
 
-    //    var examples: [Example] { get }
-    var fields: [Field] { get }
-    var schemas: [Schema] { get }
+    //    static var examples: [Example] { get }
+    static var fields: [Field.Type] { get }
+    static var schemas: [Schema.Type] { get }
 
-    var parameters: [Parameter] { get }
-    var headers: [Header] { get }
-    var requestBodies: [RequestBody] { get }
-    var securitySchemes: [SecurityScheme] { get }
+    static var parameters: [Parameter.Type] { get }
+    static var headers: [Header.Type] { get }
+    static var requestBodies: [RequestBody.Type] { get }
+    static var securitySchemes: [SecurityScheme.Type] { get }
 
-    var responses: [Response] { get }
+    static var responses: [Response.Type] { get }
 
-    var tags: [Tag] { get }
-    var operations: [Operation] { get }
-    var pathItems: [PathItem] { get }
+    static var tags: [Tag.Type] { get }
+    static var operations: [Operation.Type] { get }
+    static var pathItems: [PathItem.Type] { get }
 
 }
 
 public extension Component {
 
-    //    var examples: [Example] { [] }
-    var fields: [Field] { [] }
-    var schemas: [Schema] { [] }
+    //    static var examples: [Example] { [] }
+    static var fields: [Field.Type] { [] }
+    static var schemas: [Schema.Type] { [] }
 
-    var parameters: [Parameter] { [] }
-    var headers: [Header] { [] }
-    var requestBodies: [RequestBody] { [] }
-    var securitySchemes: [SecurityScheme] { [] }
+    static var parameters: [Parameter.Type] { [] }
+    static var headers: [Header.Type] { [] }
+    static var requestBodies: [RequestBody.Type] { [] }
+    static var securitySchemes: [SecurityScheme.Type] { [] }
 
-    var responses: [Response] { [] }
+    static var responses: [Response.Type] { [] }
 
-    var tags: [Tag] { [] }
-    var operations: [Operation] { [] }
-    var pathItems: [PathItem] { [] }
+    static var tags: [Tag.Type] { [] }
+    static var operations: [Operation.Type] { [] }
+    static var pathItems: [PathItem.Type] { [] }
 }

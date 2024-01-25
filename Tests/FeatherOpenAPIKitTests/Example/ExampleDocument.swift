@@ -10,12 +10,12 @@ import OpenAPIKit
 
 struct ExampleDocument: Document {
 
-    let components: [Component]
+    let components: [Component.Type]
 
     init() {
         self.components = [
-            ExampleComponent(),
-            FooComponent(),
+            Example.Model.self,
+//            FooComponent(),
         ]
     }
 
