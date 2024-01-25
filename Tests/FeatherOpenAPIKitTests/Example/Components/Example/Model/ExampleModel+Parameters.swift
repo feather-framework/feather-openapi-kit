@@ -6,7 +6,6 @@
 //
 
 import FeatherOpenAPIKit
-import OpenAPIKit
 
 extension Example.Model {
 

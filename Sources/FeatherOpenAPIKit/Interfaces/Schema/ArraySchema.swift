@@ -10,7 +10,7 @@ import OpenAPIKit
 public protocol ArraySchema: Schema {
     static var minItems: Int? { get }
     static var maxItems: Int? { get }
-    static var items: JSONSchema { get }
+    static var items: Schema.Type { get }
 }
 
 public extension ArraySchema {
@@ -25,7 +25,7 @@ public extension ArraySchema {
             description: description,
             minItems: minItems,
             maxItems: maxItems,
-            items: items
+            items: items.reference()
         )
     }
 }

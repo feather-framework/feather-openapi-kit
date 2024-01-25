@@ -6,7 +6,6 @@
 //
 
 import FeatherOpenAPIKit
-import OpenAPIKit
 
 extension Example.Model {
 
@@ -61,7 +60,7 @@ extension Example.Model {
             }
             
             static let description = "Lorem ipsum dolor sit amet"
-            static let items: JSONSchema = Item.reference()
+            static let items: Schema.Type = Item.self
         }
     }
 }
