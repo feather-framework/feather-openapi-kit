@@ -10,13 +10,16 @@ import OpenAPIKit
 
 extension Example.Model {
 
-    @ComponentCollection
+    static let parameters: [Parameter.Type] = [
+        Parameters.Id.self,
+    ]
+
     enum Parameters {
 
-        struct Id: PathParameter {
+        enum Id: PathParameter {
             static let name = "id"
             static let description = "Example parameter"
-            static let schema: JSONSchema = Fields.Id.reference()
+            static let schema: Schema.Type = Schemas.Id.self
         }
     }
 }

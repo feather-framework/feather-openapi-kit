@@ -14,8 +14,10 @@ public protocol Identifiable {
 public extension Identifiable {
 
     static var id: String {
-        String(reflecting: self)
-            .replacingOccurrences(of: ".", with: "")
+        var components = String(reflecting: self).split(separator: ".")
+        components.remove(at: 0) // remove namespace
+        components.remove(at: 2) // remove enum name
+        return components.joined(separator: "")
     }
 }
 

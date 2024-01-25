@@ -7,6 +7,12 @@
 
 import OpenAPIKit
 
-public protocol RequestBody: Identifiable {
+public protocol OpenAPIRequestBody: Identifiable {
     static func openAPIRequestBody() -> OpenAPI.Request
 }
+
+public protocol RequestBody: OpenAPIRequestBody {
+    
+}
+
+extension RequestBody {}

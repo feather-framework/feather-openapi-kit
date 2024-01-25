@@ -10,32 +10,26 @@ import OpenAPIKit
 
 extension Example.Model {
 
-    @ComponentCollection
+    static let pathItems: [PathItem.Type] = [
+        PathItems.Main.self,
+        PathItems.Identified.self,
+    ]
+
     enum PathItems {
 
-        struct Main: PathItem {
-            static let id = "/example/models"
-
-            static func openAPIPathItem() -> OpenAPI.PathItem {
-                .init(
-                    post: Operations.Create.openAPIOperation()
-                )
-            }
+        enum Main: PathItem {
+            static let path: Path = "/example/models"
+            
+            static let post: Operation.Type? = Operations.Create.self
         }
 
-        struct Identified: PathItem {
-            static let id = "\(Main.id)/{\(Parameters.Id.name)}"
-
-            static func openAPIPathItem() -> OpenAPI.PathItem {
-                .init(
-                    //                    summary: "path summary",
-                    //                    description: "path description",
-                    parameters: [
-                        Parameters.Id.reference()
-                    ],
-                    get: Operations.Get.openAPIOperation()
-                )
-            }
+        enum Identified: PathItem {
+            static let path: Path = Main.path / Parameters.Id.path
+            static let parameters: [Parameter.Type] = [
+                Parameters.Id.self,
+            ]
+            
+            static let get: Operation.Type? = Operations.Get.self
         }
 
     }

@@ -20,16 +20,16 @@ final class FeatherOpenAPIKitMacroTests: XCTestCase {
 
             extension Example.Model {
                 @ComponentCollection
-                enum Fields {
+                enum Schemas {
                     
-                    struct Id: UUIDField {
-                        static let description = "Unique system variable identifier"
+                    enum Id: UUIDSchema {
+                        static let description = "Unique example model identifier"
                     }
                     
-                    struct Key: TextField {
-                        static let description = "Key of the system variable"
+                    enum Key: TextSchema {
+                        static let description = "Key of the example model"
                         static let examples = [
-                            "systemEmailAddress",
+                            "my-example-key",
                         ]
                     }
                 }
@@ -40,23 +40,23 @@ final class FeatherOpenAPIKitMacroTests: XCTestCase {
                 import OpenAPIKit
 
                 extension Example.Model {
-                    enum Fields {
+                    enum Schemas {
                         
-                        struct Id: UUIDField {
-                            static let description = "Unique system variable identifier"
+                        enum Id: UUIDSchema {
+                            static let description = "Unique example model identifier"
                         }
                         
-                        struct Key: TextField {
-                            static let description = "Key of the system variable"
+                        enum Key: TextSchema {
+                            static let description = "Key of the example model"
                             static let examples = [
-                                "systemEmailAddress",
+                                "my-example-key",
                             ]
                         }
                     }
 
-                    static let fields : [Field.Type] = [
-                                Fields.Id.self,
-                          Fields.Key.self
+                    static let schemas : [Schema.Type] = [
+                                Schemas.Id.self,
+                          Schemas.Key.self
                       ]
                 }
                 """,

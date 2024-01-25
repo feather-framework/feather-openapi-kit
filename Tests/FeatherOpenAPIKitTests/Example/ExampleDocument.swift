@@ -15,7 +15,6 @@ struct ExampleDocument: Document {
     init() {
         self.components = [
             Example.Model.self
-            //            FooComponent(),
         ]
     }
 

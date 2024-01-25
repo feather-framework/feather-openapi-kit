@@ -7,12 +7,11 @@
 
 import OpenAPIKit
 
-public protocol TextField: Field {
-    static var description: String { get }
+public protocol TextSchema: Schema {
     static var examples: [String] { get }
 }
 
-public extension TextField {
+public extension TextSchema {
 
     static func openAPISchema() -> OpenAPIKit.JSONSchema {
         .text(

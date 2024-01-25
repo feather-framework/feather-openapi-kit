@@ -9,10 +9,13 @@ import FeatherOpenAPIKit
 
 extension Example.Model {
 
-    @ComponentCollection
+    static let tags: [Tag.Type] = [
+        Tags.Main.self,
+    ]
+
     enum Tags {
 
-        struct Main: Tag {
+        enum Main: Tag {
             static let name = "Model"
         }
     }

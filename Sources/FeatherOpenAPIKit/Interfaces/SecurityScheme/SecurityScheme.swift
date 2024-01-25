@@ -7,20 +7,26 @@
 
 import OpenAPIKit
 
-public protocol SecurityScheme: Identifiable {
-
+public protocol OpenAPISecurityScheme: Identifiable {
     static func openAPISecurityScheme() -> OpenAPI.SecurityScheme
-
-    static func reference() -> [OpenAPI.SecurityRequirement]
 }
 
-public extension SecurityScheme {
+public extension OpenAPISecurityScheme {
 
-    static func reference() -> [OpenAPI.SecurityRequirement] {
+    static func securityRequirement() -> [OpenAPI.SecurityRequirement] {
         [
             [
-                .component(named: id): []
+                reference(): []
             ]
         ]
     }
+
+    static func reference() -> JSONReference<OpenAPI.SecurityScheme> {
+        .component(named: id)
+    }
 }
+
+public protocol SecurityScheme: OpenAPISecurityScheme {
+    
+}
+

@@ -10,23 +10,16 @@ import OpenAPIKit
 
 extension Example.Model {
 
-    @ComponentCollection
+    static let headers: [Header.Type] = [
+        Headers.Custom.self,
+    ]
+
     enum Headers {
 
-        struct Custom: Header {
-
+        enum Custom: Header {
             static let key = "X-Custom-Header"
-
-            static func openAPIHeader() -> OpenAPI.Header {
-                .init(
-                    schema: .string(
-                        format: .generic,
-                        title: "Custom header",
-                        description: "custom header description"
-                    )
-                )
-            }
+            static let title = "Custom header"
+            static let description: String = "Custom header description"
         }
-
     }
 }

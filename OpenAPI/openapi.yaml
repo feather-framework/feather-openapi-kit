@@ -20,98 +20,117 @@ paths:
       - Model
       summary: Create example
       description: Create example detail
-      operationId: CreateOperationsModelExampleFeatherOpenAPIKitTests
+      operationId: createExampleModel
       requestBody:
         description: Create example
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleModelSchemasCreate'
+              $ref: '#/components/schemas/ExampleModelCreate'
         required: true
       responses:
         200:
-          $ref: '#/components/responses/FeatherOpenAPIKitTestsExampleModelResponsesDetail'
+          $ref: '#/components/responses/ExampleModelDetail'
       security:
-      - FeatherOpenAPIKitTestsExampleModelSecuritySchemesBearerToken: []
+      - ExampleModelBearerToken: []
   /example/models/{id}:
     parameters:
-    - $ref: '#/components/parameters/FeatherOpenAPIKitTestsExampleModelParametersId'
+    - $ref: '#/components/parameters/ExampleModelId'
     get:
       tags:
       - Model
-      summary: List example
-      description: List example detail
-      operationId: GetOperationsModelExampleFeatherOpenAPIKitTests
+      summary: Detail example
+      description: Detail example detail
+      operationId: getExampleModel
       responses:
         200:
-          $ref: '#/components/responses/FeatherOpenAPIKitTestsExampleModelResponsesDetail'
-      security:
-      - FeatherOpenAPIKitTestsExampleModelSecuritySchemesBearerToken: []
+          $ref: '#/components/responses/ExampleModelDetail'
+      security: []
 components:
   schemas:
-    FeatherOpenAPIKitTestsExampleModelFieldsId:
+    ExampleModelId:
       type: string
       format: uuid
-      description: Unique system variable identifier
+      description: Unique example model identifier
       examples:
-      - 37343E9A-6717-4A67-8DAD-F5F1F0365960
-      - C4499674-CD17-4590-B278-E5B4FD82984C
-      - 3816D100-60A3-4686-9B2C-E48B5B1AE1EF
-      - 27EE6FFD-25DB-4B81-9161-6E46084C5648
-      - 78D92A86-5E71-4CD3-894F-E04F8A8BEE91
-    FeatherOpenAPIKitTestsExampleModelFieldsKey:
+      - 1CB6FADD-63DA-4DB0-8631-B955D714B085
+      - 444FE38D-215E-4707-B64E-6BDC397471BC
+      - 0F9A1B05-BEDF-40EE-9A94-28FF12425D82
+      - 8592CA42-894F-454A-8667-AF2D6D87F7BF
+      - 6FB6E2B1-7784-4CE7-97FF-90BAA39F099E
+    ExampleModelKey:
       type: string
-      description: Key of the system variable
+      description: Key of the example model
       examples:
-      - systemEmailAddress
-    FeatherOpenAPIKitTestsExampleModelSchemasCreate:
+      - my-example-key
+    ExampleModelCreate:
       type: object
+      description: example model create object
       properties:
         key:
-          $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleModelFieldsKey'
+          $ref: '#/components/schemas/ExampleModelKey'
       required:
       - key
-    FeatherOpenAPIKitTestsExampleModelSchemasDetail:
+    ExampleModelDetail:
       type: object
+      description: example model detail object
       properties:
         id:
-          $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleModelFieldsId'
+          $ref: '#/components/schemas/ExampleModelId'
         key:
-          $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleModelFieldsKey'
+          $ref: '#/components/schemas/ExampleModelKey'
+      required:
+      - id
+      - key
+    ExampleModelList:
+      type: array
+      description: Lorem ipsum dolor sit amet
+      items:
+        $ref: '#/components/schemas/ExampleModelListItem'
+      maxItems: 1000
+      minItems: 0
+    ExampleModelListItem:
+      type: object
+      description: example model detail object
+      properties:
+        id:
+          $ref: '#/components/schemas/ExampleModelId'
+        key:
+          $ref: '#/components/schemas/ExampleModelKey'
       required:
       - id
       - key
   responses:
-    FeatherOpenAPIKitTestsExampleModelResponsesDetail:
+    ExampleModelDetail:
       description: Example
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleModelSchemasDetail'
+            $ref: '#/components/schemas/ExampleModelDetail'
   parameters:
-    FeatherOpenAPIKitTestsExampleModelParametersId:
+    ExampleModelId:
       name: id
       in: path
       required: true
       schema:
-        $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleModelFieldsId'
+        $ref: '#/components/schemas/ExampleModelId'
       description: Example parameter
   requestBodies:
-    FeatherOpenAPIKitTestsExampleModelRequestBodiesCreate:
+    ExampleModelCreate:
       description: Create example
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/FeatherOpenAPIKitTestsExampleModelSchemasCreate'
+            $ref: '#/components/schemas/ExampleModelCreate'
       required: true
   headers:
     X-Custom-Header:
       schema:
         type: string
         title: Custom header
-        description: custom header description
+        description: Custom header description
   securitySchemes:
-    FeatherOpenAPIKitTestsExampleModelSecuritySchemesBearerToken:
+    ExampleModelBearerToken:
       description: Authorization header using a Bearer token
       type: http
       scheme: bearer

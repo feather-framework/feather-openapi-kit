@@ -7,15 +7,25 @@
 
 import OpenAPIKit
 
-public protocol Response: Identifiable {
+public protocol OpenAPIResponse: Identifiable {
     static func openAPIResponse() -> OpenAPI.Response
 }
 
-public extension Response {
+public extension OpenAPIResponse {
 
     static func reference() -> Either<
-        OpenAPI.Reference<OpenAPI.Response>, OpenAPI.Response
+        OpenAPI.Reference<OpenAPI.Response>,
+        OpenAPI.Response
     > {
         .reference(.component(named: id))
     }
+}
+
+public protocol Response: OpenAPIResponse {
+
+}
+
+public extension Response {
+    
+    
 }

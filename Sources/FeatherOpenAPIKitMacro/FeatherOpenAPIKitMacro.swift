@@ -58,10 +58,10 @@ public struct ComponentCollection: PeerMacro {
             throw CustomError.message("Invalid enum name.")
         }
 
-        var collectedMemberNames: String = ""
+        var collectedMemberNames = ""
 
         for member in enumDecl.memberBlock.members {
-            if let memberName = member.decl.as(StructDeclSyntax.self)?.name.text
+            if let memberName = member.decl.as(EnumDeclSyntax.self)?.name.text
             {
                 collectedMemberNames += groupType + "." + memberName + ".self"
 
