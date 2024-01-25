@@ -14,7 +14,7 @@ public protocol Document {
 
     func openAPIDocument() -> OpenAPI.Document
 
-//    //    func examples() -> OpenAPI.ComponentDictionary<OpenAPI.Example>
+    //    //    func examples() -> OpenAPI.ComponentDictionary<OpenAPI.Example>
     func schemas() -> OpenAPI.ComponentDictionary<JSONSchema>
     func parameters() -> OpenAPI.ComponentDictionary<OpenAPI.Parameter>
     func headers() -> OpenAPI.ComponentDictionary<OpenAPI.Header>

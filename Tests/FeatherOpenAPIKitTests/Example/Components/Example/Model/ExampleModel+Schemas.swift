@@ -9,28 +9,23 @@ import FeatherOpenAPIKit
 import OpenAPIKit
 
 extension Example.Model {
-    
-    // TODO: macro generated code
-    static let schemas: [Schema.Type] = [
-        Schemas.Create.self,
-        Schemas.Detail.self,
-    ]
-    
+
+    @ComponentCollection
     enum Schemas {
-        
+
         struct Create: Schema {
-            
+
             static func openAPISchema() -> JSONSchema {
                 .object(
                     properties: [
-                        "key": Fields.Key.reference(),
+                        "key": Fields.Key.reference()
                     ]
                 )
             }
         }
-        
+
         struct Detail: Schema {
-            
+
             static func openAPISchema() -> JSONSchema {
                 .object(
                     properties: [

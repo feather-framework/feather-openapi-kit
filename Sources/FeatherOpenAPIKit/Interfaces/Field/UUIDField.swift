@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Tibor Bodecs on 25/01/2024.
 //
@@ -18,7 +18,7 @@ public extension UUIDField {
     static var examples: [UUID] {
         (0..<5).map { _ in .init() }
     }
-    
+
     static func openAPISchema() -> JSONSchema {
         .string(
             format: .uuid,

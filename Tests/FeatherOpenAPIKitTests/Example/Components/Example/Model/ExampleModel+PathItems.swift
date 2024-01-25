@@ -10,15 +10,10 @@ import OpenAPIKit
 
 extension Example.Model {
 
-    // TODO: macro generated code
-    static let pathItems: [PathItem.Type] = [
-        PathItems.Main.self,
-        PathItems.Identified.self,
-    ]
-    
+    @ComponentCollection
     enum PathItems {
 
-        struct Main: PathItem {            
+        struct Main: PathItem {
             static let id = "/example/models"
 
             static func openAPIPathItem() -> OpenAPI.PathItem {
@@ -33,8 +28,8 @@ extension Example.Model {
 
             static func openAPIPathItem() -> OpenAPI.PathItem {
                 .init(
-//                    summary: "path summary",
-//                    description: "path description",
+                    //                    summary: "path summary",
+                    //                    description: "path description",
                     parameters: [
                         Parameters.Id.reference()
                     ],

@@ -9,12 +9,8 @@ import FeatherOpenAPIKit
 import OpenAPIKit
 
 extension Example.Model {
-    
-    // TODO: macro generated code
-    static let responses: [Response.Type] = [
-        Responses.Detail.self,
-    ]
-    
+
+    @ComponentCollection
     enum Responses {
 
         struct Detail: JSONResponse {
@@ -23,4 +19,3 @@ extension Example.Model {
         }
     }
 }
-

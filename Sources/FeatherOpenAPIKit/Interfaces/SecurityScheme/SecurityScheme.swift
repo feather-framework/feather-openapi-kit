@@ -10,7 +10,7 @@ import OpenAPIKit
 public protocol SecurityScheme: Identifiable {
 
     static func openAPISecurityScheme() -> OpenAPI.SecurityScheme
-    
+
     static func reference() -> [OpenAPI.SecurityRequirement]
 }
 

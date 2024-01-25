@@ -9,11 +9,7 @@ import FeatherOpenAPIKit
 
 extension Example.Model {
 
-    // TODO: macro generated code
-    static let tags: [Tag.Type] = [
-        Tags.Main.self,
-    ]
-    
+    @ComponentCollection
     enum Tags {
 
         struct Main: Tag {

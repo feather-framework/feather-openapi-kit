@@ -16,16 +16,12 @@ extension Operation {
 }
 
 extension Example.Model {
-    
-    // TODO: macro generated code
-    static let securitySchemes: [SecurityScheme.Type] = [
-        SecuritySchemes.BearerToken.self,
-    ]
-    
+
+    @ComponentCollection
     enum SecuritySchemes {
-        
+
         struct BearerToken: SecurityScheme {
-            
+
             static func openAPISecurityScheme() -> OpenAPI.SecurityScheme {
                 .init(
                     type: .http(

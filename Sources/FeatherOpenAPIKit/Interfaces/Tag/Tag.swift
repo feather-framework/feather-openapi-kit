@@ -15,7 +15,7 @@ public protocol Tag: Identifiable {
 }
 
 public extension Tag {
-    
+
     static var name: String { id }
     static var description: String { "" }
 

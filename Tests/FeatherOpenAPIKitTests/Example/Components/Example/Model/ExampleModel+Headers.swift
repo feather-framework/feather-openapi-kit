@@ -9,14 +9,10 @@ import FeatherOpenAPIKit
 import OpenAPIKit
 
 extension Example.Model {
-    
-    // TODO: macro generated code
-    static let headers: [Header.Type] = [
-        Headers.Custom.self,
-    ]
 
+    @ComponentCollection
     enum Headers {
-        
+
         struct Custom: Header {
 
             static let key = "X-Custom-Header"
@@ -31,6 +27,6 @@ extension Example.Model {
                 )
             }
         }
-        
+
     }
 }
