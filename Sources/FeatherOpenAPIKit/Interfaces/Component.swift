@@ -23,21 +23,3 @@ public protocol Component {
     static var pathItems: [PathItem.Type] { get }
 
 }
-
-public extension Component {
-
-    //    static var examples: [Example] { [] }
-    static var fields: [Field.Type] { [] }
-    static var schemas: [Schema.Type] { [] }
-
-    static var parameters: [Parameter.Type] { [] }
-    static var headers: [Header.Type] { [] }
-    static var requestBodies: [RequestBody.Type] { [] }
-    static var securitySchemes: [SecurityScheme.Type] { [] }
-
-    static var responses: [Response.Type] { [] }
-
-    static var tags: [Tag.Type] { [] }
-    static var operations: [Operation.Type] { [] }
-    static var pathItems: [PathItem.Type] { [] }
-}
