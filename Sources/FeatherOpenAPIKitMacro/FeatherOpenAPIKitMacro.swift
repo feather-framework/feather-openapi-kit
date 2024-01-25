@@ -25,59 +25,37 @@ public struct ComponentCollection: PeerMacro {
 
         switch groupType {
         case "Fields":
-            do {
-                variableName = "fields"
-                baseType = "Field"
-            }
+            variableName = "fields"
+            baseType = "Field"
         case "Schemas":
-            do {
-                variableName = "schemas"
-                baseType = "Schema"
-            }
+            variableName = "schemas"
+            baseType = "Schema"
         case "Parameters":
-            do {
-                variableName = "parameters"
-                baseType = "Parameter"
-            }
+            variableName = "parameters"
+            baseType = "Parameter"
         case "Headers":
-            do {
-                variableName = "headers"
-                baseType = "Header"
-            }
+            variableName = "headers"
+            baseType = "Header"
         case "RequestBodies":
-            do {
-                variableName = "requestBodies"
-                baseType = "RequestBody"
-            }
+            variableName = "requestBodies"
+            baseType = "RequestBody"
         case "SecuritySchemes":
-            do {
-                variableName = "securitySchemes"
-                baseType = "SecurityScheme"
-            }
+            variableName = "securitySchemes"
+            baseType = "SecurityScheme"
         case "Responses":
-            do {
-                variableName = "responses"
-                baseType = "Response"
-            }
+            variableName = "responses"
+            baseType = "Response"
         case "Tags":
-            do {
-                variableName = "tags"
-                baseType = "Tag"
-            }
+            variableName = "tags"
+            baseType = "Tag"
         case "Operations":
-            do {
-                variableName = "operations"
-                baseType = "Operation"
-            }
+            variableName = "operations"
+            baseType = "Operation"
         case "PathItems":
-            do {
-                variableName = "pathItems"
-                baseType = "PathItem"
-            }
+            variableName = "pathItems"
+            baseType = "PathItem"
         default:
-            do {
-                throw CustomError.message("Invalid enum name.")
-            }
+            throw CustomError.message("Invalid enum name.")
         }
 
         var collectedMemberNames: String = ""
