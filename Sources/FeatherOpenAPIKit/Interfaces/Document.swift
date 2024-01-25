@@ -10,11 +10,11 @@ import OpenAPIKitCore
 
 // https://spec.openapis.org/oas/latest.html
 public protocol Document {
-    var components: [Component] { get }
+    var components: [Component.Type] { get }
 
     func openAPIDocument() -> OpenAPI.Document
 
-    //    func examples() -> OpenAPI.ComponentDictionary<OpenAPI.Example>
+//    //    func examples() -> OpenAPI.ComponentDictionary<OpenAPI.Example>
     func schemas() -> OpenAPI.ComponentDictionary<JSONSchema>
     func parameters() -> OpenAPI.ComponentDictionary<OpenAPI.Parameter>
     func headers() -> OpenAPI.ComponentDictionary<OpenAPI.Header>
@@ -104,6 +104,7 @@ public extension Document {
     }
 
     func paths() -> OpenAPI.PathItem.Map {
+
         components.reduce(into: [:]) { into, item in
             for pathItem in item.pathItems {
                 into[pathItem.openAPIPath] = .init(pathItem.openAPIPathItem())
