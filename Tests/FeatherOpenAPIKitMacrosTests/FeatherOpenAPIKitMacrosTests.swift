@@ -15,12 +15,27 @@ final class FeatherOpenAPIKitMacrosTests: XCTestCase {
         enum TopLevel {
             @ComponentCollection
             enum Schemas {
-                enum Bar: TextSchema {
-                    static let description = ""
-                    static let examples = ["bar"]
+                enum Foo {
+                    enum Bar: TextSchema {
+                        enum empty {
+                            //TODO: it seems empty enum is sucks for MemberMacro (except in test :P) ...
+                            //  it will solve by the tree iterator version in the furure
+                            case member
+                        }
+
+                        enum Baz: TextSchema {
+                            static let description = ""
+                            static let examples = ["baz"]
+                        }
+                        static let description = ""
+                        static let examples = ["bar"]
+                    }
                 }
             }
         }
-        XCTAssertFalse(TopLevel.schemas.isEmpty)
+
+        XCTAssert(TopLevel.schemas.count == 2)
+        //wtf??? why does not work this test properly? (when I change it for 3 it will not produce error)
+        //        XCTAssertEqual(TopLevel.schemas.count, 3)
     }
 }

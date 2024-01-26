@@ -12,6 +12,11 @@ import SwiftSyntaxMacros
 struct FeatherOpenAPIKitMacrosKit: CompilerPlugin {
 
     let providingMacros: [Macro.Type] = [
-        ComponentCollectionMacro.self
+        ComponentCollectionMacro.self,
+        ComponentCollectionLevel_1.self,
+        ComponentCollectionLevel_2.self,
+        ComponentCollectionLevel_3.self,
+        ComponentCollectionLevel_4.self,
+        ComponentCollectionLevel_5.self,
     ]
 }
