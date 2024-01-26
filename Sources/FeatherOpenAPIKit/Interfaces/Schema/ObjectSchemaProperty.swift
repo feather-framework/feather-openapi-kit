@@ -11,7 +11,7 @@ public struct ObjectSchemaProperty {
 
     public let name: String
     public let schema: Schema.Type
-    public let required: Bool = true
+    public let required: Bool
 
     public init(
         _ name: String,
@@ -20,5 +20,6 @@ public struct ObjectSchemaProperty {
     ) {
         self.name = name
         self.schema = schema
+        self.required = required
     }
 }

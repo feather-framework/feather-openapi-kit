@@ -13,6 +13,7 @@ extension Example.Model {
         Schemas.Id.self,
         Schemas.Key.self,
         Schemas.Create.self,
+        Schemas.Patch.self,
         Schemas.Detail.self,
         Schemas.List.self,
         Schemas.List.Item.self,
@@ -35,7 +36,6 @@ extension Example.Model {
             static let description = "example model create object"
             static let properties: [ObjectSchemaProperty] = [
                 .init("key", Key.self),
-                .init("key", Key.self),
             ]
         }
 
@@ -45,6 +45,14 @@ extension Example.Model {
             static let properties: [ObjectSchemaProperty] = [
                 .init("id", Id.self),
                 .init("key", Key.self),
+            ]
+        }
+        
+        enum Patch: ObjectSchema {
+            static let description = "example model detail object"
+
+            static let properties: [ObjectSchemaProperty] = [
+                .init("key", Key.self, required: false),
             ]
         }
 
