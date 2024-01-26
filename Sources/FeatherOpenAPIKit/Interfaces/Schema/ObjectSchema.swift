@@ -17,7 +17,7 @@ public extension ObjectSchema {
         .object(
             description: description,
             properties: properties.reduce(into: [:]) {
-                $0[$1.name] = $1.schema.reference()
+                $0[$1.name] = $1.schema.reference(required: $1.required)
             }
         )
     }

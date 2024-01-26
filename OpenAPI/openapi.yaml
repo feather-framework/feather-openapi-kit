@@ -53,11 +53,11 @@ components:
       format: uuid
       description: Unique example model identifier
       examples:
-      - 124C8F79-CD5B-4D41-A732-76B42C01705E
-      - B45AA57C-88B7-40B6-B53D-DA0411B4E7DC
-      - FBBC78B0-4E6C-44B9-B6FC-6B2E6393204B
-      - AEB84B3F-F93D-495D-AEA5-A7636112ED8F
-      - BD9DF1DE-F13E-4BD4-A082-C3F357307BF9
+      - 08A6D020-E624-47B3-BBE4-629A75981CD1
+      - 7348EE2A-66B1-476E-B269-53BE2DD333F6
+      - 4E9FD814-4799-4426-87DF-0EB4256456E8
+      - 7E998B4C-6828-45E1-B8E1-AA2C3079C8E6
+      - 97F4BA94-7171-4349-97B1-8D375AC52A01
     ExampleModelKey:
       type: string
       description: Key of the example model
@@ -71,6 +71,12 @@ components:
           $ref: '#/components/schemas/ExampleModelKey'
       required:
       - key
+    ExampleModelPatch:
+      type: object
+      description: example model detail object
+      properties:
+        key:
+          $ref: '#/components/schemas/ExampleModelKey'
     ExampleModelDetail:
       type: object
       description: example model detail object
