@@ -10,7 +10,7 @@ import FeatherOpenAPIKit
 extension Example.Model {
 
     static let parameters: [Parameter.Type] = [
-        Parameters.Id.self,
+        Parameters.Id.self
     ]
 
     enum Parameters {

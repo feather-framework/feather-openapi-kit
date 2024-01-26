@@ -10,7 +10,7 @@ import FeatherOpenAPIKit
 extension Example.Model {
 
     static let responses: [Response.Type] = [
-        Responses.Detail.self,
+        Responses.Detail.self
     ]
 
     enum Responses {

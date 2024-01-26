@@ -15,8 +15,8 @@ public extension OpenAPIParameter {
 
     static func reference() -> Either<
         OpenAPI.Reference<OpenAPI.Parameter>,
-        OpenAPI.Parameter>
-    {
+        OpenAPI.Parameter
+    > {
         .reference(.component(named: id))
     }
 }
@@ -29,7 +29,7 @@ public protocol Parameter: OpenAPIParameter {
 }
 
 public extension Parameter {
-    
+
     static func openAPIParameter() -> OpenAPI.Parameter {
         .init(
             name: name,
@@ -38,8 +38,6 @@ public extension Parameter {
             description: description
         )
     }
-
-    
 
     static var path: Path {
         .parameter(name)

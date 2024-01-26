@@ -12,7 +12,7 @@ public protocol OpenAPIRequestBody: Identifiable {
 }
 
 public protocol RequestBody: OpenAPIRequestBody {
-    
+
 }
 
 extension RequestBody {}

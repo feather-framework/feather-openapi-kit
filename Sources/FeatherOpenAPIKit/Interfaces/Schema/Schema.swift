@@ -25,4 +25,3 @@ public extension OpenAPISchema {
 public protocol Schema: OpenAPISchema {
     static var description: String { get }
 }
-

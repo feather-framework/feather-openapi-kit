@@ -27,6 +27,5 @@ public extension OpenAPISecurityScheme {
 }
 
 public protocol SecurityScheme: OpenAPISecurityScheme {
-    
-}
 
+}

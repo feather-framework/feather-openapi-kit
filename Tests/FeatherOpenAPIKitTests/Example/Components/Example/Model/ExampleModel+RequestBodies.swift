@@ -10,7 +10,7 @@ import FeatherOpenAPIKit
 extension Example.Model {
 
     static let requestBodies: [RequestBody.Type] = [
-        RequestBodies.Create.self,
+        RequestBodies.Create.self
     ]
 
     enum RequestBodies {

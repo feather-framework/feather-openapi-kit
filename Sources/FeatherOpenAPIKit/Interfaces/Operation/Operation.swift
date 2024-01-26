@@ -16,7 +16,7 @@ public protocol Operation: OpenAPIOperation {
     static var tag: Tag.Type { get }
     static var summary: String { get }
     static var description: String { get }
-    
+
     static var parameters: [Parameter.Type] { get }
     static var requestBody: RequestBody.Type? { get }
     static var responses: [OperationResponse] { get }
@@ -30,18 +30,18 @@ public extension Operation {
             .split(separator: ".")
             .dropFirst()
             .map(String.init)
-        
+
         components.remove(at: 2)
         if let last = components.popLast()?.lowercasedFirstLetter() {
             components.insert(last, at: 0)
         }
         return components.joined(separator: "")
     }
-    
+
     static var parameters: [Parameter.Type] { [] }
     static var requestBody: RequestBody.Type? { nil }
     static var security: [SecurityScheme.Type] { [] }
-    
+
     static func openAPIOperation() -> OpenAPI.Operation {
         .init(
             tags: tag.name,
@@ -51,11 +51,10 @@ public extension Operation {
             parameters: parameters.map { $0.reference() },
             requestBody: requestBody?.openAPIRequestBody(),
             responses: responses.reduce(into: [:]) {
-                $0[.init(integerLiteral: $1.statusCode)] = $1.response.reference()
+                $0[.init(integerLiteral: $1.statusCode)] = $1.response
+                    .reference()
             },
             security: security.map { [$0.reference(): []] }
         )
     }
 }
-
-

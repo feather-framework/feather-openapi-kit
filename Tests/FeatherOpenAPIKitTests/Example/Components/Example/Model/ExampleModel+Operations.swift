@@ -13,18 +13,18 @@ extension Example.Model {
         Operations.Get.self,
         Operations.Create.self,
     ]
-    
+
     enum Operations {
 
         enum Get: Operation {
             static let tag: Tag.Type = Tags.Main.self
             static let summary = "Detail example"
             static let description = "Detail example detail"
-//            static var parameters: [Parameter.Type] = [
-//                Parameters.Id.self,
-//            ]
+            //            static var parameters: [Parameter.Type] = [
+            //                Parameters.Id.self,
+            //            ]
             static let responses: [OperationResponse] = [
-                .init(200, Responses.Detail.self),
+                .init(200, Responses.Detail.self)
             ]
         }
 
@@ -32,12 +32,13 @@ extension Example.Model {
             static let tag: Tag.Type = Tags.Main.self
             static let summary = "Create example"
             static let description = "Create example detail"
-            static var requestBody: RequestBody.Type? = RequestBodies.Create.self
+            static var requestBody: RequestBody.Type? = RequestBodies.Create
+                .self
             static let responses: [OperationResponse] = [
-                .init(200, Responses.Detail.self),
+                .init(200, Responses.Detail.self)
             ]
             static let security: [SecurityScheme.Type] = [
-                SecuritySchemes.BearerToken.self,
+                SecuritySchemes.BearerToken.self
             ]
         }
 

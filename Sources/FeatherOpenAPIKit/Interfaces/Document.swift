@@ -33,15 +33,16 @@ public protocol Document {
 
 public extension Document {
 
-//    func examples() -> OpenAPI.ComponentDictionary<OpenAPI.Example> {
-//        [:]
-//    }
+    //    func examples() -> OpenAPI.ComponentDictionary<OpenAPI.Example> {
+    //        [:]
+    //    }
 
     func schemas() -> OpenAPI.ComponentDictionary<JSONSchema> {
         components.reduce([:]) {
-            $0 + $1.schemas.reduce(into: [:]) {
-                $0[$1.componentKey] = $1.openAPISchema()
-            }
+            $0
+                + $1.schemas.reduce(into: [:]) {
+                    $0[$1.componentKey] = $1.openAPISchema()
+                }
         }
     }
 
@@ -117,7 +118,7 @@ public extension Document {
                 schemas: schemas(),
                 responses: responses(),
                 parameters: parameters(),
-//                examples: examples(),
+                //                examples: examples(),
                 requestBodies: requestBodies(),
                 headers: headers(),
                 securitySchemes: securitySchemes()

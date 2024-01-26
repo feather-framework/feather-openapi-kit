@@ -10,7 +10,7 @@ import FeatherOpenAPIKit
 extension Example.Model {
 
     static let headers: [Header.Type] = [
-        Headers.Custom.self,
+        Headers.Custom.self
     ]
 
     enum Headers {
