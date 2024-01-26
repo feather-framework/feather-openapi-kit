@@ -18,9 +18,6 @@ final class FeatherOpenAPIKitMacrosTests: XCTestCase {
                 enum Foo {
                     enum Bar: TextSchema {
                         enum empty {
-                            //TODO: it seems empty enum is sucks for MemberMacro (except in test :P) ...
-                            //  it will solve by the tree iterator version in the furure
-                            case member
                         }
 
                         enum Baz: TextSchema {
@@ -35,7 +32,7 @@ final class FeatherOpenAPIKitMacrosTests: XCTestCase {
         }
 
         XCTAssert(TopLevel.schemas.count == 2)
-        //wtf??? why does not work this test properly? (when I change it for 3 it will not produce error)
-        //        XCTAssertEqual(TopLevel.schemas.count, 3)
+        // wtf??? why does not work this test properly? (when I change it for 3 it will not produce error but it should do)
+        //XCTAssertEqual(TopLevel.schemas.count, 3)
     }
 }
