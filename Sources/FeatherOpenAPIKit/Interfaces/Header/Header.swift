@@ -20,7 +20,7 @@ public protocol Header: OpenAPIHeader {
 public extension Header {
 
     static var id: String { key }
-    
+
     static func openAPIHeader() -> OpenAPI.Header {
         .init(
             schema: .string(

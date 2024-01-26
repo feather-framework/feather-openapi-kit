@@ -17,7 +17,7 @@ extension Example.Model {
         Schemas.List.self,
         Schemas.List.Item.self,
     ]
-    
+
     enum Schemas {
 
         enum Id: UUIDSchema {
@@ -27,7 +27,7 @@ extension Example.Model {
         enum Key: TextSchema {
             static let description = "Key of the example model"
             static let examples = [
-                "my-example-key",
+                "my-example-key"
             ]
         }
 
@@ -47,7 +47,7 @@ extension Example.Model {
                 .init("key", Key.self),
             ]
         }
-        
+
         enum List: ArraySchema {
 
             enum Item: ObjectSchema {
@@ -58,7 +58,7 @@ extension Example.Model {
                     .init("key", Key.self),
                 ]
             }
-            
+
             static let description = "Lorem ipsum dolor sit amet"
             static let items: Schema.Type = Item.self
         }

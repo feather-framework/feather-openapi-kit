@@ -26,6 +26,5 @@ public protocol Response: OpenAPIResponse {
 }
 
 public extension Response {
-    
-    
+
 }

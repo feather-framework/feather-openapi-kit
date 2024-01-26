@@ -13,7 +13,7 @@ public protocol OpenAPIPathItem: Identifiable {
 }
 
 public protocol PathItem: OpenAPIPathItem {
-    
+
     static var path: Path { get }
 
     static var summary: String? { get }
@@ -46,7 +46,7 @@ public extension PathItem {
     static var head: Operation.Type? { nil }
     static var patch: Operation.Type? { nil }
     static var trace: Operation.Type? { nil }
-    
+
     static func openAPIPathItem() -> OpenAPI.PathItem {
         .init(
             summary: summary,
@@ -59,11 +59,9 @@ public extension PathItem {
             delete: delete?.openAPIOperation(),
             options: options?.openAPIOperation(),
             head: head?.openAPIOperation(),
-            patch: patch?.openAPIOperation(), 
+            patch: patch?.openAPIOperation(),
             trace: trace?.openAPIOperation(),
             vendorExtensions: [:]
         )
     }
 }
-
-

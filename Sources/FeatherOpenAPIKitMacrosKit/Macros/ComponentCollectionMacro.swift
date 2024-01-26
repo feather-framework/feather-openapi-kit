@@ -4,9 +4,13 @@ import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
 import Foundation
 
-enum CustomError: Error { case message(String) }
+enum CustomError: Error {
 
-public struct ComponentCollection: PeerMacro {
+    case message(String)
+}
+
+public struct ComponentCollectionMacro: PeerMacro {
+
     public static func expansion(
         of node: SwiftSyntax.AttributeSyntax,
         providingPeersOf declaration: some SwiftSyntax.DeclSyntaxProtocol,
@@ -61,8 +65,7 @@ public struct ComponentCollection: PeerMacro {
         var collectedMemberNames = ""
 
         for member in enumDecl.memberBlock.members {
-            if let memberName = member.decl.as(EnumDeclSyntax.self)?.name.text
-            {
+            if let memberName = member.decl.as(EnumDeclSyntax.self)?.name.text {
                 collectedMemberNames += groupType + "." + memberName + ".self"
 
                 if enumDecl.memberBlock.members.last != member {
@@ -81,11 +84,4 @@ public struct ComponentCollection: PeerMacro {
 
         return [extended]
     }
-}
-
-@main
-struct FeatherOpenAPIKitMacroPlugin: CompilerPlugin {
-    let providingMacros: [Macro.Type] = [
-        ComponentCollection.self
-    ]
 }

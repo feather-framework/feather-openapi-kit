@@ -18,16 +18,16 @@ extension Example.Model {
 
         enum Main: PathItem {
             static let path: Path = "/example/models"
-            
+
             static let post: Operation.Type? = Operations.Create.self
         }
 
         enum Identified: PathItem {
             static let path: Path = Main.path / Parameters.Id.path
             static let parameters: [Parameter.Type] = [
-                Parameters.Id.self,
+                Parameters.Id.self
             ]
-            
+
             static let get: Operation.Type? = Operations.Get.self
         }
 

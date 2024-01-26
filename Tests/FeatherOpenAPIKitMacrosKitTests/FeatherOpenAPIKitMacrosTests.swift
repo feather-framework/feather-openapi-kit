@@ -1,16 +1,14 @@
 import SwiftSyntaxMacros
 import SwiftSyntaxMacrosTestSupport
 import XCTest
+import FeatherOpenAPIKitMacrosKit
 
-#if canImport(FeatherOpenAPIKitMacro)
-import FeatherOpenAPIKitMacro
+final class FeatherOpenAPIKitMacrosTests: XCTestCase {
 
-let FeatherOpenAPIKitMacros: [String: Macro.Type] = [
-    "ComponentCollection": ComponentCollection.self
-]
-#endif
+    let testMacros: [String: Macro.Type] = [
+        "ComponentCollection": ComponentCollectionMacro.self
+    ]
 
-final class FeatherOpenAPIKitMacroTests: XCTestCase {
     func testProtoMacro() {
         //TODO: make test
         assertMacroExpansion(
@@ -60,9 +58,7 @@ final class FeatherOpenAPIKitMacroTests: XCTestCase {
                       ]
                 }
                 """,
-            macros: FeatherOpenAPIKitMacros
+            macros: testMacros
         )
-
     }
-
 }

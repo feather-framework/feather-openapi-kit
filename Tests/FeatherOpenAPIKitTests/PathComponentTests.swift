@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Tibor Bodecs on 25/01/2024.
 //
@@ -22,7 +22,7 @@ fileprivate extension Path {
 }
 
 //parameter test class with name
-fileprivate struct ParameterDummy {
+private struct ParameterDummy {
     let name: String
 }
 
@@ -32,7 +32,6 @@ fileprivate extension Path {
         parameter(param.name)
     }
 }
-
 
 final class PathComponentTests: XCTestCase {
 

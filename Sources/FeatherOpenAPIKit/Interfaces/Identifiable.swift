@@ -15,8 +15,8 @@ public extension Identifiable {
 
     static var id: String {
         var components = String(reflecting: self).split(separator: ".")
-        components.remove(at: 0) // remove namespace
-        components.remove(at: 2) // remove enum name
+        components.remove(at: 0)  // remove namespace
+        components.remove(at: 2)  // remove enum name
         return components.joined(separator: "")
     }
 }

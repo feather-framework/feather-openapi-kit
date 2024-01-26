@@ -10,7 +10,7 @@ import FeatherOpenAPIKit
 extension Example.Model {
 
     static let tags: [Tag.Type] = [
-        Tags.Main.self,
+        Tags.Main.self
     ]
 
     enum Tags {
