@@ -8,19 +8,23 @@
 import FeatherOpenAPIKit
 import OpenAPIKit
 
+// shared operation security
 extension Operation {
 
     static func bearerToken() -> [OpenAPI.SecurityRequirement] {
-        Example.Model.SecuritySchemes.BearerToken.reference()
+        Example.Model.SecuritySchemes.BearerToken.securityRequirement()
     }
 }
 
 extension Example.Model {
 
-    @ComponentCollection
+    static let securitySchemes: [SecurityScheme.Type] = [
+        SecuritySchemes.BearerToken.self,
+    ]
+
     enum SecuritySchemes {
 
-        struct BearerToken: SecurityScheme {
+        enum BearerToken: SecurityScheme {
 
             static func openAPISecurityScheme() -> OpenAPI.SecurityScheme {
                 .init(

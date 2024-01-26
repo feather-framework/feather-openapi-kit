@@ -7,19 +7,18 @@
 
 import OpenAPIKit
 
-public protocol EnumField: Field {
-    static var description: String { get }
+public protocol EnumSchema: Schema {
     static var allowedValues: [String] { get }
     static var defaultValue: String? { get }
     static var examples: [String] { get }
 }
 
-public extension EnumField {
+public extension EnumSchema {
     static var defaultValue: String? { nil }
     static var examples: [String] { [] }
 }
 
-public extension EnumField {
+public extension EnumSchema {
 
     static func openAPISchema() -> JSONSchema {
         var anyDefault: AnyCodable? = nil

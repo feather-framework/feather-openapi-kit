@@ -6,53 +6,39 @@
 //
 
 import FeatherOpenAPIKit
-import OpenAPIKit
 
 extension Example.Model {
 
-    @ComponentCollection
+    static let operations: [Operation.Type] = [
+        Operations.Get.self,
+        Operations.Create.self,
+    ]
+    
     enum Operations {
 
-        struct Get: Operation {
-
-            static func openAPIOperation() -> OpenAPI.Operation {
-                .init(
-                    tags: Tags.Main.name,
-                    summary: "List example",
-                    description: """
-                        List example detail
-                        """,
-                    operationId: operationId,
-                    responses: [
-                        200: Responses.Detail.reference()
-                            //                        400: Shared.Component.Responses.BadRequest().reference(),
-                            //                        401: Shared.Component.Responses.Unauthorized().reference(),
-                            //                        403: Shared.Component.Responses.Forbidden().reference(),
-                    ],
-                    security: bearerToken()
-                )
-            }
+        enum Get: Operation {
+            static let tag: Tag.Type = Tags.Main.self
+            static let summary = "Detail example"
+            static let description = "Detail example detail"
+//            static var parameters: [Parameter.Type] = [
+//                Parameters.Id.self,
+//            ]
+            static let responses: [OperationResponse] = [
+                .init(200, Responses.Detail.self),
+            ]
         }
 
-        struct Create: Operation {
-
-            static func openAPIOperation() -> OpenAPI.Operation {
-                .init(
-                    tags: Tags.Main.name,
-                    summary: "Create example",
-                    description: """
-                        Create example detail
-                        """,
-                    operationId: operationId,
-                    requestBody: RequestBodies.Create.openAPIRequestBody(),
-                    responses: [
-                        200: Responses.Detail.reference()
-                            //                        401: Shared.Component.Responses.Unauthorized().reference(),
-                            //                        403: Shared.Component.Responses.Forbidden().reference(),
-                    ],
-                    security: bearerToken()
-                )
-            }
+        enum Create: Operation {
+            static let tag: Tag.Type = Tags.Main.self
+            static let summary = "Create example"
+            static let description = "Create example detail"
+            static var requestBody: RequestBody.Type? = RequestBodies.Create.self
+            static let responses: [OperationResponse] = [
+                .init(200, Responses.Detail.self),
+            ]
+            static let security: [SecurityScheme.Type] = [
+                SecuritySchemes.BearerToken.self,
+            ]
         }
 
     }

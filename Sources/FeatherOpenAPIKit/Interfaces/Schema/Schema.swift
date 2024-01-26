@@ -7,11 +7,11 @@
 
 import OpenAPIKit
 
-public protocol Schema: Identifiable {
+public protocol OpenAPISchema: Identifiable {
     static func openAPISchema() -> JSONSchema
 }
 
-public extension Schema {
+public extension OpenAPISchema {
 
     static func reference(required: Bool = true) -> JSONSchema {
         .reference(.component(named: id), required: required)
@@ -21,3 +21,8 @@ public extension Schema {
         .init(schemaReference: .component(named: id))
     }
 }
+
+public protocol Schema: OpenAPISchema {
+    static var description: String { get }
+}
+

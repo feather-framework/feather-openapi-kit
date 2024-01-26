@@ -7,7 +7,7 @@
 
 import OpenAPIKit
 
-public protocol QueryParameter: ContextParameter {}
+public protocol QueryParameter: Parameter {}
 
 public extension QueryParameter {
     static var context: OpenAPI.Parameter.Context { .query }

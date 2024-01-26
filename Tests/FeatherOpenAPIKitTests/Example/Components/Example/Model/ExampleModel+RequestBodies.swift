@@ -6,16 +6,18 @@
 //
 
 import FeatherOpenAPIKit
-import OpenAPIKit
 
 extension Example.Model {
 
-    @ComponentCollection
+    static let requestBodies: [RequestBody.Type] = [
+        RequestBodies.Create.self,
+    ]
+
     enum RequestBodies {
 
-        struct Create: JSONBody {
+        enum Create: JSONBody {
             static let description = "Create example"
-            static let content: OpenAPI.Content = Schemas.Create.reference()
+            static let schema: Schema.Type = Schemas.Create.self
         }
     }
 }

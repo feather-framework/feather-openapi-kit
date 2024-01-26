@@ -7,7 +7,7 @@
 
 import OpenAPIKit
 
-public protocol PathParameter: ContextParameter {}
+public protocol PathParameter: Parameter {}
 
 public extension PathParameter {
     static var context: OpenAPI.Parameter.Context { .path }

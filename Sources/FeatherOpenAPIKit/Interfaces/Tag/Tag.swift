@@ -7,11 +7,13 @@
 
 import OpenAPIKit
 
-public protocol Tag: Identifiable {
+public protocol OpenAPITag: Identifiable {
+    static func openAPITag() -> OpenAPI.Tag
+}
+
+public protocol Tag: OpenAPITag {
     static var name: String { get }
     static var description: String { get }
-
-    static func openAPITag() -> OpenAPI.Tag
 }
 
 public extension Tag {

@@ -8,12 +8,11 @@
 import OpenAPIKit
 import Foundation
 
-public protocol UUIDField: Field {
-    static var description: String { get }
+public protocol UUIDSchema: Schema {
     static var examples: [UUID] { get }
 }
 
-public extension UUIDField {
+public extension UUIDSchema {
 
     static var examples: [UUID] {
         (0..<5).map { _ in .init() }

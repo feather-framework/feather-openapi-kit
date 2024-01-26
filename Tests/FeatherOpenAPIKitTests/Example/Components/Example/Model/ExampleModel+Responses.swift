@@ -6,16 +6,18 @@
 //
 
 import FeatherOpenAPIKit
-import OpenAPIKit
 
 extension Example.Model {
 
-    @ComponentCollection
+    static let responses: [Response.Type] = [
+        Responses.Detail.self,
+    ]
+
     enum Responses {
 
-        struct Detail: JSONResponse {
+        enum Detail: JSONResponse {
             static let description = "Example"
-            static let content: OpenAPI.Content = Schemas.Detail.reference()
+            static let schema: Schema.Type = Schemas.Detail.self
         }
     }
 }
