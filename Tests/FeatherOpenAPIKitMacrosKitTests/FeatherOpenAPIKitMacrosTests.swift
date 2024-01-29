@@ -82,7 +82,7 @@ final class FeatherOpenAPIKitMacrosTests: XCTestCase {
                         }
                     }
 
-                    static let schemas : [Schema.Type] = [
+                    public static let schemas : [Schema.Type] = [
                                 Schemas.Id.self,
                           Schemas.Key.InsiderKey.InsiderKeyLevel3.InsiderKeyLevel4.InsiderKeyLevel5.self,
                           Schemas.Key.InsiderKey.InsiderKeyLevel3.self,

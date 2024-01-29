@@ -76,7 +76,7 @@ public struct ComponentCollectionMacro: PeerMacro {
         
         let extended = DeclSyntax(
             """
-              static let \(raw: nameAndType.variable) : [\(raw: nameAndType.type).Type] = [
+              public static let \(raw: nameAndType.variable) : [\(raw: nameAndType.type).Type] = [
                   \(raw: collectedMemberTypes)
               ]
             """
