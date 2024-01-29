@@ -6,7 +6,7 @@ import FeatherOpenAPIKitMacrosKit
 final class FeatherOpenAPIKitMacrosTests: XCTestCase {
 
     let testMacros: [String: Macro.Type] = [
-        "ComponentCollection": ComponentCollectionMacro.self
+        "ComponentCollection": ComponentCollectionMacro.self,
     ]
 
     func testProtoMacro() {
@@ -19,12 +19,27 @@ final class FeatherOpenAPIKitMacrosTests: XCTestCase {
             extension Example.Model {
                 @ComponentCollection
                 enum Schemas {
-                    
+                    enum empty {
+                    }
+
                     enum Id: UUIDSchema {
                         static let description = "Unique example model identifier"
                     }
                     
-                    enum Key: TextSchema {
+                    enum Key {
+                        enum InsiderKey: TextSchema {
+                            enum InsiderKeyLevel3: TextSchema {
+                                enum InsiderKeyLevel4 {
+                                    enum InsiderKeyLevel5: TextSchema {
+                                    }
+                                }
+                            }
+                            static let description = "Key of the example model"
+                            static let examples = [
+                                "my-example-key",
+                            ]
+                        }
+
                         static let description = "Key of the example model"
                         static let examples = [
                             "my-example-key",
@@ -39,12 +54,27 @@ final class FeatherOpenAPIKitMacrosTests: XCTestCase {
 
                 extension Example.Model {
                     enum Schemas {
-                        
+                        enum empty {
+                        }
+
                         enum Id: UUIDSchema {
                             static let description = "Unique example model identifier"
                         }
                         
-                        enum Key: TextSchema {
+                        enum Key {
+                            enum InsiderKey: TextSchema {
+                                enum InsiderKeyLevel3: TextSchema {
+                                    enum InsiderKeyLevel4 {
+                                        enum InsiderKeyLevel5: TextSchema {
+                                        }
+                                    }
+                                }
+                                static let description = "Key of the example model"
+                                static let examples = [
+                                    "my-example-key",
+                                ]
+                            }
+
                             static let description = "Key of the example model"
                             static let examples = [
                                 "my-example-key",
@@ -54,7 +84,9 @@ final class FeatherOpenAPIKitMacrosTests: XCTestCase {
 
                     static let schemas : [Schema.Type] = [
                                 Schemas.Id.self,
-                          Schemas.Key.self
+                          Schemas.Key.InsiderKey.InsiderKeyLevel3.InsiderKeyLevel4.InsiderKeyLevel5.self,
+                          Schemas.Key.InsiderKey.InsiderKeyLevel3.self,
+                          Schemas.Key.InsiderKey.self
                       ]
                 }
                 """,

@@ -12,6 +12,6 @@ import SwiftSyntaxMacros
 struct FeatherOpenAPIKitMacrosKit: CompilerPlugin {
 
     let providingMacros: [Macro.Type] = [
-        ComponentCollectionMacro.self
+        ComponentCollectionMacro.self,
     ]
 }

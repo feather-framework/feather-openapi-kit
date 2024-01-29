@@ -35,7 +35,7 @@ extension Example.Model {
         enum Create: ObjectSchema {
             static let description = "example model create object"
             static let properties: [ObjectSchemaProperty] = [
-                .init("key", Key.self),
+                .init("key", Key.self)
             ]
         }
 
@@ -47,12 +47,12 @@ extension Example.Model {
                 .init("key", Key.self),
             ]
         }
-        
+
         enum Patch: ObjectSchema {
             static let description = "example model detail object"
 
             static let properties: [ObjectSchemaProperty] = [
-                .init("key", Key.self, required: false),
+                .init("key", Key.self, required: false)
             ]
         }
 

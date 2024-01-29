@@ -15,12 +15,24 @@ final class FeatherOpenAPIKitMacrosTests: XCTestCase {
         enum TopLevel {
             @ComponentCollection
             enum Schemas {
-                enum Bar: TextSchema {
-                    static let description = ""
-                    static let examples = ["bar"]
+                enum Foo {
+                    enum Bar: TextSchema {
+                        enum empty {
+                        }
+
+                        enum Baz: TextSchema {
+                            static let description = ""
+                            static let examples = ["baz"]
+                        }
+                        static let description = ""
+                        static let examples = ["bar"]
+                    }
                 }
             }
         }
-        XCTAssertFalse(TopLevel.schemas.isEmpty)
+
+        XCTAssert(TopLevel.schemas.count == 2)
+        // wtf??? why does not work this test properly? (when I change it for 3 it will not produce error but it should do)
+        //XCTAssertEqual(TopLevel.schemas.count, 3)
     }
 }
