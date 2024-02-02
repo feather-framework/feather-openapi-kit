@@ -6,8 +6,15 @@
 //
 
 @attached(peer, names: arbitrary)
-public macro ComponentCollection() =
+public macro ComponentCollection(_ plusMembers: [String] = []) =
     #externalMacro(
         module: "FeatherOpenAPIKitMacrosKit",
         type: "ComponentCollectionMacro"
+    )
+
+@attached(member, names: arbitrary)
+public macro ComponentCollectionExtension(_ listName: String) =
+    #externalMacro(
+        module: "FeatherOpenAPIKitMacrosKit",
+        type: "ComponentCollectionExtensionMacro"
     )

@@ -9,6 +9,7 @@ import XCTest
 import FeatherOpenAPIKit
 import FeatherOpenAPIKitMacros
 
+
 final class FeatherOpenAPIKitMacrosTests: XCTestCase {
 
     func testExample() {
@@ -35,4 +36,9 @@ final class FeatherOpenAPIKitMacrosTests: XCTestCase {
         // wtf??? why does not work this test properly? (when I change it for 3 it will not produce error but it should do)
         //XCTAssertEqual(TopLevel.schemas.count, 3)
     }
+    
+    func testExtensionExample() {
+        XCTAssert(TopLevelTest.schemas.count == 3)
+    }
+
 }
