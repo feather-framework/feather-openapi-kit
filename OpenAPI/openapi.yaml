@@ -53,11 +53,11 @@ components:
       format: uuid
       description: Unique example model identifier
       examples:
-      - EB9C918D-21A8-4ED0-AAAC-7BD951460E4A
-      - 6C802EAE-9B33-4157-AE60-124004B332B4
-      - 0F46378A-82E5-424D-B6F4-30E66B54ECD7
-      - EFCC489A-2C68-427B-BF3C-DA1D465B9A65
-      - EFECC1FF-F2E4-45EA-9379-F1A4AF475604
+      - EADC8E71-DBEA-4E97-8583-3F9868DB131A
+      - 394E4D2E-6DD5-4E02-9BB6-8626DBF28EB9
+      - 0715DC92-C02D-41D5-AFFC-C330069943CD
+      - 69854148-674A-4EE9-87E8-3CFF58046473
+      - 69561227-B47D-4ADE-9337-635AD83C7E40
     ExampleModelKey:
       type: string
       description: Key of the example model
