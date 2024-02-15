@@ -12,22 +12,28 @@ public protocol OpenAPIHeader: Identifiable {
 }
 
 public protocol Header: OpenAPIHeader {
-    static var key: String { get }
-    static var title: String { get }
+    static var name: String { get }
     static var description: String { get }
+    static var schema: Schema.Type { get }
 }
 
 public extension Header {
 
-    static var id: String { key }
+    static func reference() -> Either<
+        OpenAPI.Reference<OpenAPI.Header>, OpenAPI.Header
+    > {
+        .reference(.component(named: id))
+    }
+}
+
+public extension Header {
+
+    static var id: String { name }
 
     static func openAPIHeader() -> OpenAPI.Header {
         .init(
-            schema: .string(
-                format: .generic,
-                title: title,
-                description: description
-            )
+            schema: schema.reference(),
+            description: description
         )
     }
 }

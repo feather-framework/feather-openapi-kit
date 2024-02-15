@@ -10,15 +10,15 @@ import FeatherOpenAPIKit
 extension Example.Model {
 
     static let headers: [Header.Type] = [
-        Headers.Custom.self
+        Headers.CustomResponseHeader.self
     ]
 
     enum Headers {
 
-        enum Custom: Header {
-            static let key = "X-Custom-Header"
-            static let title = "Custom header"
-            static let description: String = "Custom header description"
+        enum CustomResponseHeader: Header {
+            static let name = "X-Custom-Response-Header"
+            static let description: String = "My custom response header"
+            static var schema: Schema.Type = Schemas.CustomHeader.self
         }
     }
 }

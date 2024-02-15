@@ -6,6 +6,7 @@
 //
 
 import FeatherOpenAPIKit
+import OpenAPIKit
 
 extension Example.Model {
 
@@ -15,8 +16,18 @@ extension Example.Model {
 
     enum Responses {
 
+        enum Custom: Response {
+            static let description = "Example"
+            static var contents: [OpenAPI.ContentType: Schema.Type] = [
+                .xml: Schemas.Detail.self
+            ]
+        }
+
         enum Detail: JSONResponse {
             static let description = "Example"
+            static var headers: [Header.Type] = [
+                Headers.CustomResponseHeader.self
+            ]
             static let schema: Schema.Type = Schemas.Detail.self
         }
     }

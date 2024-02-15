@@ -17,12 +17,20 @@ extension Example.Model {
         Schemas.Detail.self,
         Schemas.List.self,
         Schemas.List.Item.self,
+        Schemas.CustomHeader.self,
     ]
 
     enum Schemas {
 
         enum Id: UUIDSchema {
             static let description = "Unique example model identifier"
+        }
+
+        enum CustomHeader: TextSchema {
+            static let description = "Custom header"
+            static let examples = [
+                "my-example-key"
+            ]
         }
 
         enum Key: TextSchema {
