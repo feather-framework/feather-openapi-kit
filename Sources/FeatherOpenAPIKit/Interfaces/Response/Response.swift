@@ -31,6 +31,8 @@ public extension Response {
 
     static var headers: [Header.Type] { [] }
 
+    static var contents: [OpenAPIKit.OpenAPI.ContentType : FeatherOpenAPIKit.Schema.Type] { [:] }
+
     static func openAPIResponse() -> OpenAPI.Response {
         .init(
             description: description,
