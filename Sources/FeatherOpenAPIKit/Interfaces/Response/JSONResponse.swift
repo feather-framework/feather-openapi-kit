@@ -8,18 +8,15 @@
 import OpenAPIKit
 
 public protocol JSONResponse: Response {
-    static var description: String { get }
+
     static var schema: Schema.Type { get }
 }
 
 public extension JSONResponse {
 
-    static func openAPIResponse() -> OpenAPI.Response {
-        .init(
-            description: description,
-            content: [
-                .json: schema.reference()
-            ]
-        )
+    static var contents: [OpenAPI.ContentType: Schema.Type] {
+        [
+            .json: schema
+        ]
     }
 }

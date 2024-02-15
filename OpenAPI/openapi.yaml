@@ -42,6 +42,8 @@ paths:
       summary: Detail example
       description: Detail example detail
       operationId: getExampleModel
+      parameters:
+      - $ref: '#/components/parameters/ExampleModelCustomRequestHeader'
       responses:
         200:
           $ref: '#/components/responses/ExampleModelDetail'
@@ -53,11 +55,11 @@ components:
       format: uuid
       description: Unique example model identifier
       examples:
-      - 609CB4E9-1208-44AD-88C2-2115EA026701
-      - A58EF27D-F925-4B5D-902A-51F68729A412
-      - C98461B0-00C5-40DE-85AA-C2C0EE99D16B
-      - 4597044E-7B98-44BD-A3C2-C84122B7BEBA
-      - B6789383-CF29-4D5D-9939-E7F397E07F5B
+      - 103A4E7F-1431-4486-991D-71EC3A14E15D
+      - BBE6E400-002C-431F-AD0A-9CF6F8ACD132
+      - 2A0C3C7E-040D-4398-B21A-62C35254ACFB
+      - 07482573-CD52-4B30-87AD-73CA916FE62F
+      - FD433E4C-BB91-40EA-BC72-88414BED9D13
     ExampleModelKey:
       type: string
       description: Key of the example model
@@ -106,9 +108,17 @@ components:
       required:
       - id
       - key
+    ExampleModelCustomHeader:
+      type: string
+      description: Custom header
+      examples:
+      - my-example-key
   responses:
     ExampleModelDetail:
       description: Example
+      headers:
+        X-Custom-Response-Header:
+          $ref: '#/components/headers/X-Custom-Response-Header'
       content:
         application/json:
           schema:
@@ -121,6 +131,13 @@ components:
       schema:
         $ref: '#/components/schemas/ExampleModelId'
       description: Example parameter
+    ExampleModelCustomRequestHeader:
+      name: CustomRequestHeader
+      in: header
+      required: true
+      schema:
+        $ref: '#/components/schemas/ExampleModelCustomHeader'
+      description: Example request header parameter
   requestBodies:
     ExampleModelCreate:
       description: Create example
@@ -130,11 +147,10 @@ components:
             $ref: '#/components/schemas/ExampleModelCreate'
       required: true
   headers:
-    X-Custom-Header:
+    X-Custom-Response-Header:
       schema:
-        type: string
-        title: Custom header
-        description: Custom header description
+        $ref: '#/components/schemas/ExampleModelCustomHeader'
+      description: My custom response header
   securitySchemes:
     ExampleModelBearerToken:
       description: Authorization header using a Bearer token

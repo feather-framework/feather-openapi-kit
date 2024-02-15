@@ -6,7 +6,7 @@ import FeatherOpenAPIKitMacrosKit
 final class FeatherOpenAPIKitMacrosTests: XCTestCase {
 
     let testMacros: [String: Macro.Type] = [
-        "ComponentCollection": ComponentCollectionMacro.self,
+        "ComponentCollection": ComponentCollectionMacro.self
     ]
 
     func testProtoMacro() {
