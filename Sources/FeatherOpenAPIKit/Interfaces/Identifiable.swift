@@ -18,6 +18,7 @@ public extension Identifiable {
         components.remove(at: 0)  // remove namespace
         components.remove(at: 2)  // remove enum name
         return components.joined(separator: "")
+            .replacingOccurrences(of: "GenericComponent", with: "Generic")
     }
 }
 

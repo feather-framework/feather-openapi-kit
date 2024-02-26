@@ -14,6 +14,8 @@ let package = Package(
     products: [
         .library(name: "FeatherOpenAPIKit", targets: ["FeatherOpenAPIKit"]),
         .library(name: "FeatherOpenAPIKitMacros", targets: ["FeatherOpenAPIKitMacros"]),
+        .plugin(name: "FeatherOpenAPIGenerator", targets: ["FeatherOpenAPIGenerator"]),
+        .executable(name: "feather-openapi-generator", targets: ["feather-openapi-generator"]),
     ],
     dependencies: [
         .package(url: "https://github.com/mattpolzin/OpenAPIKit", from: "3.1.0"),
@@ -38,6 +40,22 @@ let package = Package(
             name: "FeatherOpenAPIKit",
             dependencies: [
                 .product(name: "OpenAPIKit", package: "OpenAPIKit"),
+            ],
+            plugins: [
+                .plugin(name: "FeatherOpenAPIGenerator")
+            ]
+        ),
+        .executableTarget(
+            name: "feather-openapi-generator",
+            dependencies: [
+                .product(name: "SwiftParser", package: "swift-syntax")
+            ]
+        ),
+        .plugin(
+            name: "FeatherOpenAPIGenerator",
+            capability: .buildTool(),
+            dependencies: [
+                .target(name: "feather-openapi-generator")
             ]
         ),
         .testTarget(

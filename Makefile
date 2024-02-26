@@ -24,3 +24,12 @@ openapi-security-check:
 
 openapi-server:
 	docker run -it --rm -p 8888:80 --name openapi -v "$(PWD)/OpenAPI:/usr/share/nginx/html" nginx
+
+release: build
+	swift build -c release
+
+install: release
+	install .build/release/feather-openapi-generator /usr/local/bin/feather-openapi-generator
+
+uninstall:
+	rm /usr/local/bin/feather-openapi-generator
