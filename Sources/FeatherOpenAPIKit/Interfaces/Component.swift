@@ -21,20 +21,20 @@ public protocol Component {
     static var tags: [Tag.Type] { get }
     static var operations: [Operation.Type] { get }
     static var pathItems: [PathItem.Type] { get }
+
+    static func getClassByType<T>() -> [T]
 }
 
 public extension Component {
-    // static var examples: [Example.Type] { [] }
-    static var schemas: [Schema.Type] { [] }
-
-    static var parameters: [Parameter.Type] { [] }
-    static var headers: [Header.Type] { [] }
-    static var requestBodies: [RequestBody.Type] { [] }
-    static var securitySchemes: [SecurityScheme.Type] { [] }
-
-    static var responses: [Response.Type] { [] }
-
-    static var tags: [Tag.Type] { [] }
-    static var operations: [Operation.Type] { [] }
-    static var pathItems: [PathItem.Type] { [] }
+    static var schemas: [Schema.Type] { getClassByType() }
+    static var parameters: [Parameter.Type] { getClassByType() }
+    static var headers: [Header.Type] { getClassByType() }
+    static var requestBodies: [RequestBody.Type] { getClassByType() }
+    static var securitySchemes: [SecurityScheme.Type] { getClassByType() }
+    static var responses: [Response.Type] { getClassByType() }
+    static var tags: [Tag.Type] { getClassByType() }
+    static var operations: [FeatherOpenAPIKit.Operation.Type] {
+        getClassByType()
+    }
+    static var pathItems: [PathItem.Type] { getClassByType() }
 }
