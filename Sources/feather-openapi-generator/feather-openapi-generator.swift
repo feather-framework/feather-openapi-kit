@@ -47,14 +47,15 @@ struct _Tool {
                 }
             }
 
-            /*public extension Component {
-                private static func getClassByType<T>() -> [T] {
+            public extension Component {
+                static func getClassByType<T>() -> [T] {
                     let prefixName = String(reflecting: self) + "."
                     return ComponentCollector.getClassByType().filter {
                         String(reflecting: $0).hasPrefix(prefixName)
                     }
                 }
-                
+            }
+            /*
                 static var schemas: [Schema.Type] { getClassByType() }
                 static var parameters: [Parameter.Type] { getClassByType() }
                 static var headers: [Header.Type] { getClassByType() }
