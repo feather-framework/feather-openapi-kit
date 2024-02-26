@@ -9,7 +9,8 @@ extension Generic.Component.Responses {
 
     public enum Conflict: JSONResponse {
         public static let description: String = "Conflict"
-        public static var schema: Schema.Type = Generic.Component.Schemas.Conflict
+        public static var schema: Schema.Type = Generic.Component.Schemas
+            .Conflict
             .Error
             .self
     }

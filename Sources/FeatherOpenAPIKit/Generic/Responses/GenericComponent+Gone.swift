@@ -9,7 +9,8 @@ extension Generic.Component.Responses {
 
     public enum Gone: JSONResponse {
         public static let description: String = "Gone"
-        public static var schema: Schema.Type = Generic.Component.Schemas.Gone.Error
+        public static var schema: Schema.Type = Generic.Component.Schemas.Gone
+            .Error
             .self
     }
 }

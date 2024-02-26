@@ -9,7 +9,8 @@ extension Generic.Component.Responses {
 
     public enum BadRequest: JSONResponse {
         public static let description: String = "Bad request"
-        public static var schema: Schema.Type = Generic.Component.Schemas.BadRequest
+        public static var schema: Schema.Type = Generic.Component.Schemas
+            .BadRequest
             .Error.self
     }
 }

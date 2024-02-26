@@ -25,14 +25,16 @@ extension Generic.Component {
                 public static let name = "pageSize"
                 public static let description =
                     "The number of items per page"
-                public static let schema: Schema.Type = Schemas.List.Page.Size.self
+                public static let schema: Schema.Type = Schemas.List.Page.Size
+                    .self
             }
 
             public enum PageIndex: QueryParameter {
                 public static let name = "pageIndex"
                 public static let description =
                     "The current page number"
-                public static let schema: Schema.Type = Schemas.List.Page.Index.self
+                public static let schema: Schema.Type = Schemas.List.Page.Index
+                    .self
             }
 
             public enum Order: QueryParameter {

@@ -100,7 +100,9 @@ extension Generic.Component {
         // MARK: -
 
         public enum UpdatedAt: DateTimeSchema {
-            public static var description: String { "Last update for the object" }
+            public static var description: String {
+                "Last update for the object"
+            }
         }
 
         // see Responses folder

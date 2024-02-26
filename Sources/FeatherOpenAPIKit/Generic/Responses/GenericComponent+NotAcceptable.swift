@@ -9,7 +9,8 @@ extension Generic.Component.Responses {
 
     public enum NotAcceptable: JSONResponse {
         public static let description: String = "Not acceptable"
-        public static var schema: Schema.Type = Generic.Component.Schemas.NotAcceptable
+        public static var schema: Schema.Type = Generic.Component.Schemas
+            .NotAcceptable
             .Error.self
     }
 }

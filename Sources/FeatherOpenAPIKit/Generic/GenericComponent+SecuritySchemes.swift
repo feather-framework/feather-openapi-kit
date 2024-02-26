@@ -14,7 +14,8 @@ extension Generic.Component {
     public enum SecuritySchemes {
 
         public enum BearerToken: SecurityScheme {
-            public static func openAPISecurityScheme() -> OpenAPI.SecurityScheme {
+            public static func openAPISecurityScheme() -> OpenAPI.SecurityScheme
+            {
                 .init(
                     type: .http(
                         scheme: "bearer",

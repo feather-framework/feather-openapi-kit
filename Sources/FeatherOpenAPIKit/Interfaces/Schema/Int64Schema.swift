@@ -20,4 +20,3 @@ extension Int64Schema where T == Int {
         )
     }
 }
-

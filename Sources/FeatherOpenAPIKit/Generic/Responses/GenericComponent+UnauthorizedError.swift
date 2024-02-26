@@ -9,7 +9,8 @@ extension Generic.Component.Responses {
 
     public enum Unauthorized: JSONResponse {
         public static let description: String = "Unauthorized"
-        public static var schema: Schema.Type = Generic.Component.Schemas.Unauthorized
+        public static var schema: Schema.Type = Generic.Component.Schemas
+            .Unauthorized
             .Error.self
     }
 

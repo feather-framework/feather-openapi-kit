@@ -21,11 +21,11 @@ public protocol Component {
     static var tags: [Tag.Type] { get }
     static var operations: [Operation.Type] { get }
     static var pathItems: [PathItem.Type] { get }
-    
+
     static func getClassByType<T>() -> [T]
 }
 
-public extension Component {    
+public extension Component {
     static var schemas: [Schema.Type] { getClassByType() }
     static var parameters: [Parameter.Type] { getClassByType() }
     static var headers: [Header.Type] { getClassByType() }
@@ -33,6 +33,8 @@ public extension Component {
     static var securitySchemes: [SecurityScheme.Type] { getClassByType() }
     static var responses: [Response.Type] { getClassByType() }
     static var tags: [Tag.Type] { getClassByType() }
-    static var operations: [FeatherOpenAPIKit.Operation.Type] { getClassByType() }
+    static var operations: [FeatherOpenAPIKit.Operation.Type] {
+        getClassByType()
+    }
     static var pathItems: [PathItem.Type] { getClassByType() }
 }

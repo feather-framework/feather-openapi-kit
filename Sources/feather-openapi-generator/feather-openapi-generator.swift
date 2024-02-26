@@ -14,12 +14,14 @@ struct _Tool {
     static func main() async throws {
         print("FeatherOpenAPIGenerator is running...")
 
-        guard CommandLine.arguments.count == 3 else {
+        guard CommandLine.arguments.count >= 3 else {
             throw BuilderError.wrongArgumentsNumber
         }
 
         let input = URL(filePath: CommandLine.arguments[1])
         let output = URL(filePath: CommandLine.arguments[2])
+        let target =
+            CommandLine.arguments.count > 3 ? CommandLine.arguments[3] : ""
 
         let typeList = try collectTypes(input.path)
         let collectedTypes = typeList.joined(separator: ",\n        ")
@@ -33,7 +35,7 @@ struct _Tool {
         let code =
             """
             //generated on: \(dateString)
-            import FeatherOpenAPIKit
+            \(target == "FeatherOpenAPIKit" ? "" : "import FeatherOpenAPIKit")
 
             public enum ComponentCollector {
                 public static let objects : [Any.Type] = [
@@ -55,17 +57,6 @@ struct _Tool {
                     }
                 }
             }
-            /*
-                static var schemas: [Schema.Type] { getClassByType() }
-                static var parameters: [Parameter.Type] { getClassByType() }
-                static var headers: [Header.Type] { getClassByType() }
-                static var requestBodies: [RequestBody.Type] { getClassByType() }
-                static var securitySchemes: [SecurityScheme.Type] { getClassByType() }
-                static var responses: [Response.Type] { getClassByType() }
-                static var tags: [Tag.Type] { getClassByType() }
-                static var operations: [FeatherOpenAPIKit.Operation.Type] { getClassByType() }
-                static var pathItems: [PathItem.Type] { getClassByType() }
-            }*/
             """
 
         print("Generated code path: \(output.path)")

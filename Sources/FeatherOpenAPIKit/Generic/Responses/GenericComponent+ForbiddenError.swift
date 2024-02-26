@@ -9,7 +9,8 @@ extension Generic.Component.Responses {
 
     public enum Forbidden: JSONResponse {
         public static let description: String = "Forbidden"
-        public static var schema: Schema.Type = Generic.Component.Schemas.Forbidden
+        public static var schema: Schema.Type = Generic.Component.Schemas
+            .Forbidden
             .Error.self
     }
 }

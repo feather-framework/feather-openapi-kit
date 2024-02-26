@@ -9,7 +9,8 @@ extension Generic.Component.Responses {
 
     public enum NotFound: JSONResponse {
         public static let description: String = "Not found"
-        public static var schema: Schema.Type = Generic.Component.Schemas.NotFound
+        public static var schema: Schema.Type = Generic.Component.Schemas
+            .NotFound
             .Error
             .self
     }

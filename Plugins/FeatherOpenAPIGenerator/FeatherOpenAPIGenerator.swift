@@ -24,7 +24,7 @@ enum PluginError: Error {
                     "feather-openapi-generator"
                 )
                 .path,
-                arguments: [sourceDir, output],
+                arguments: [sourceDir, output, targetName],
                 environment: [:],
                 inputFiles: [],
                 outputFiles: [output]
