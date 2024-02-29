@@ -42,17 +42,22 @@ struct _Tool {
                     \(collectedTypes)
                 ]
                 
-                public static let components: [Component.Type] = getClassByType()
+                public static let components: [Component.Type] = getComponentsOfType()
 
-                static func getClassByType<T>() -> [T] {
+                public static func getComponentsOfType<T>() -> [T] {
                     return Self.objects.compactMap { $0 as? T }
+                }
+            
+                public static func getComponentsOfType<T>(_: T.Type) -> [T] {
+                    getComponentsOfType()
                 }
             }
 
             public extension Component {
-                static func getClassByType<T>() -> [T] {
+
+                static func getComponentsOfType<T>() -> [T] {
                     let prefixName = String(reflecting: self) + "."
-                    return ComponentCollector.getClassByType().filter {
+                    return ComponentCollector.getComponentsOfType().filter {
                         String(reflecting: $0).hasPrefix(prefixName)
                     }
                 }
