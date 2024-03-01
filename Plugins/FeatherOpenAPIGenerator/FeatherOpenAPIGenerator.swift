@@ -14,12 +14,12 @@ enum PluginError: Error {
     ) throws -> [Command] {
         let sourceDir = longestCommonFolderPath(sourceFiles.map(\.path.string))
         let output = pluginWorkDirectory.appending(
-            "GeneratedComponentCollector.swift"
+            "Component+Generated.swift"
         )
 
         return [
             .buildCommand(
-                displayName: "Generate ComponentCollector Code",
+                displayName: "Generate component extension code",
                 executable: try tool(
                     "feather-openapi-generator"
                 )
