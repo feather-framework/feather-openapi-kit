@@ -22,19 +22,22 @@ public protocol Component {
     static var operations: [Operation.Type] { get }
     static var pathItems: [PathItem.Type] { get }
 
-    static func getClassByType<T>() -> [T]
+    static func getComponentsOfType<T>() -> [T]
+    static func getComponentsOfType<T>(_: T.Type) -> [T]
 }
 
 public extension Component {
-    static var schemas: [Schema.Type] { getClassByType() }
-    static var parameters: [Parameter.Type] { getClassByType() }
-    static var headers: [Header.Type] { getClassByType() }
-    static var requestBodies: [RequestBody.Type] { getClassByType() }
-    static var securitySchemes: [SecurityScheme.Type] { getClassByType() }
-    static var responses: [Response.Type] { getClassByType() }
-    static var tags: [Tag.Type] { getClassByType() }
-    static var operations: [FeatherOpenAPIKit.Operation.Type] {
-        getClassByType()
+    static var schemas: [Schema.Type] { getComponentsOfType() }
+    static var parameters: [Parameter.Type] { getComponentsOfType() }
+    static var headers: [Header.Type] { getComponentsOfType() }
+    static var requestBodies: [RequestBody.Type] { getComponentsOfType() }
+    static var securitySchemes: [SecurityScheme.Type] { getComponentsOfType() }
+    static var responses: [Response.Type] { getComponentsOfType() }
+    static var tags: [Tag.Type] { getComponentsOfType() }
+    static var operations: [Operation.Type] { getComponentsOfType() }
+    static var pathItems: [PathItem.Type] { getComponentsOfType() }
+
+    static func getComponentsOfType<T>(_: T.Type) -> [T] {
+        getComponentsOfType()
     }
-    static var pathItems: [PathItem.Type] { getClassByType() }
 }

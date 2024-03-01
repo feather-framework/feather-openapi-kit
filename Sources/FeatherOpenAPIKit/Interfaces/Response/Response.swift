@@ -33,7 +33,9 @@ public extension Response {
 
     static var contents:
         [OpenAPIKit.OpenAPI.ContentType: FeatherOpenAPIKit.Schema.Type]
-    { [:] }
+    {
+        [:]
+    }
 
     static func openAPIResponse() -> OpenAPI.Response {
         .init(

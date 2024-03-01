@@ -37,22 +37,13 @@ struct _Tool {
             //generated on: \(dateString)
             \(target == "FeatherOpenAPIKit" ? "" : "import FeatherOpenAPIKit")
 
-            public enum ComponentCollector {
-                public static let objects : [Any.Type] = [
-                    \(collectedTypes)
-                ]
-                
-                public static let components: [Component.Type] = getClassByType()
+            extension Component {
 
-                static func getClassByType<T>() -> [T] {
-                    return Self.objects.compactMap { $0 as? T }
-                }
-            }
-
-            public extension Component {
-                static func getClassByType<T>() -> [T] {
+                public static func getComponentsOfType<T>() -> [T] {
                     let prefixName = String(reflecting: self) + "."
-                    return ComponentCollector.getClassByType().filter {
+                    return [
+                        \(collectedTypes)
+                    ].compactMap { $0 as? T }.filter {
                         String(reflecting: $0).hasPrefix(prefixName)
                     }
                 }
