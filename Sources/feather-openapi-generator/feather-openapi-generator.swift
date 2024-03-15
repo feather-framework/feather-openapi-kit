@@ -18,8 +18,8 @@ struct _Tool {
             throw BuilderError.wrongArgumentsNumber
         }
 
-        let input = URL(filePath: CommandLine.arguments[1])
-        let output = URL(filePath: CommandLine.arguments[2])
+        let input = URL(fileURLWithPath: CommandLine.arguments[1])
+        let output = URL(fileURLWithPath: CommandLine.arguments[2])
         let target =
             CommandLine.arguments.count > 3 ? CommandLine.arguments[3] : ""
 
