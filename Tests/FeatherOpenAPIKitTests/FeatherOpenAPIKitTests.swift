@@ -29,4 +29,13 @@ final class FeatherOpenAPIKitTests: XCTestCase {
 
         _ = try encoder.encode(openAPIDocument)
     }
+
+    func testSchemaDescription() throws {
+
+        struct IDSchema: NanoIDSchema {}
+        struct Foo: NanoIDSchema {}
+
+        XCTAssertEqual(IDSchema.description, "ID description")
+        XCTAssertEqual(Foo.description, "Foo description")
+    }
 }

@@ -25,3 +25,14 @@ public extension OpenAPISchema {
 public protocol Schema: OpenAPISchema {
     static var description: String { get }
 }
+
+extension Schema {
+
+    public static var description: String {
+        let desc = String(describing: self)
+        if desc.hasSuffix("Schema") {
+            return desc.dropLast("Schema".count) + " description"
+        }
+        return desc + " description"
+    }
+}
