@@ -29,7 +29,7 @@ final class FeatherOpenAPIKitTests: XCTestCase {
 
         _ = try encoder.encode(openAPIDocument)
     }
-    
+
     func testSchemaDescription() throws {
 
         struct IDSchema: NanoIDSchema {}
