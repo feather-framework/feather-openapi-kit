@@ -10,5 +10,10 @@ import OpenAPIKit
 public protocol QueryParameter: Parameter {}
 
 public extension QueryParameter {
-    static var context: OpenAPI.Parameter.Context { .query }
+
+    static var required: Bool { false }
+
+    static var context: OpenAPI.Parameter.Context {
+        .query(required: Self.required)
+    }
 }

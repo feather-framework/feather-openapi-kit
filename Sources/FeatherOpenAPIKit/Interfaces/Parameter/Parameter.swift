@@ -39,7 +39,7 @@ public extension Parameter {
         .init(
             name: name,
             context: context,
-            schema: schema.reference(required: required),
+            schema: schema.reference(),
             description: description
         )
     }

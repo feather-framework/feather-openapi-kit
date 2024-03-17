@@ -7,13 +7,9 @@
 
 import OpenAPIKit
 
-public protocol HeaderParameter: Parameter {
-    static var required: Bool { get }
-}
+public protocol HeaderParameter: Parameter {}
 
 public extension HeaderParameter {
-
-    static var required: Bool { true }
 
     static var context: OpenAPI.Parameter.Context {
         .header(required: Self.required)
