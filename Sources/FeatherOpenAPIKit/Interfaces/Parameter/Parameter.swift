@@ -26,20 +26,21 @@ public protocol Parameter: OpenAPIParameter {
     static var context: OpenAPI.Parameter.Context { get }
     static var schema: Schema.Type { get }
     static var description: String { get }
+    static var required: Bool { get }
 }
 
 public extension Parameter {
+
+    static var required: Bool { true }
+
+    static var path: Path { .parameter(name) }
 
     static func openAPIParameter() -> OpenAPI.Parameter {
         .init(
             name: name,
             context: context,
-            schema: schema.reference(),
+            schema: schema.reference(required: required),
             description: description
         )
-    }
-
-    static var path: Path {
-        .parameter(name)
     }
 }
