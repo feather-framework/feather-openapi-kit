@@ -95,6 +95,9 @@ public extension Document {
         components.reduce([]) {
             $0 + $1.tags.map { $0.openAPITag() }
         }
+        .sorted { lhs, rhs in
+            lhs.name < rhs.name
+        }
     }
 
     func paths() -> OpenAPI.PathItem.Map {
