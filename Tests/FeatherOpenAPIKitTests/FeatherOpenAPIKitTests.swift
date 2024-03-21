@@ -18,6 +18,15 @@ final class FeatherOpenAPIKitTests: XCTestCase {
     func testRender() throws {
 
         let document = ExampleDocument()
+
+        XCTAssert(
+            try document.schemas()
+                .contains {
+                    $0.key.rawValue == "ExampleModelPatch"
+                        && $0.value.description == "overridden"
+                }
+        )
+
         let encoder = YAMLEncoder()
         let openAPIDocument = try document.openAPIDocument()
         do {

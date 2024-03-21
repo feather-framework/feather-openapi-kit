@@ -84,7 +84,7 @@ extension Example.Model {
             static let id = Patch.id
             static let override = true
 
-            static let description = "example model detail object"
+            static let description = "overridden"
 
             static let properties: [ObjectSchemaProperty] = [
                 .init("key", Key.self, required: false)
