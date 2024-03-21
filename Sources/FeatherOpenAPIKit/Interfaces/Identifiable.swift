@@ -9,6 +9,7 @@ import OpenAPIKit
 
 public protocol Identifiable {
     static var id: String { get }
+    static var override: Bool { get }
 }
 
 public extension Identifiable {
@@ -20,6 +21,8 @@ public extension Identifiable {
         return components.joined(separator: "")
             .replacingOccurrences(of: "GenericComponent", with: "Generic")
     }
+
+    static var override: Bool { false }
 }
 
 public extension Identifiable {

@@ -8,20 +8,20 @@
 import FeatherOpenAPIKit
 import OpenAPIKit
 
-struct ExampleDocument: Document {
+struct ExampleDuplicatedItemDocument: Document {
 
     let components: [Component.Type]
 
     init() {
         self.components = [
-            Example.Model.self
+            ExampleDuplicatedItem.Model.self
         ]
     }
 
     func openAPIDocument() throws -> OpenAPI.Document {
         try composedDocument(
             info: .init(
-                title: "Example",
+                title: "ExampleDuplicatedItem",
                 description: """
                     Example API description
                     """,

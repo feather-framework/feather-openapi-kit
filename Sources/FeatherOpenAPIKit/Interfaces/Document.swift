@@ -12,121 +12,187 @@ import OpenAPIKitCore
 public protocol Document {
     var components: [Component.Type] { get }
 
-    func openAPIDocument() -> OpenAPI.Document
+    func openAPIDocument() throws -> OpenAPI.Document
 
-    //    func examples() -> OpenAPI.ComponentDictionary<OpenAPI.Example>
-    func schemas() -> OpenAPI.ComponentDictionary<JSONSchema>
-    func parameters() -> OpenAPI.ComponentDictionary<OpenAPI.Parameter>
-    func headers() -> OpenAPI.ComponentDictionary<OpenAPI.Header>
-    func requestBodies() -> OpenAPI.ComponentDictionary<OpenAPI.Request>
-    func securitySchemes()
+    func schemas() throws -> OpenAPI.ComponentDictionary<JSONSchema>
+    func parameters() throws -> OpenAPI.ComponentDictionary<OpenAPI.Parameter>
+    func headers() throws -> OpenAPI.ComponentDictionary<OpenAPI.Header>
+    func requestBodies() throws -> OpenAPI.ComponentDictionary<OpenAPI.Request>
+    func securitySchemes() throws
         -> OpenAPI.ComponentDictionary<OpenAPI.SecurityScheme>
-    func responses() -> OpenAPI.ComponentDictionary<OpenAPI.Response>
-    func tags() -> [OpenAPI.Tag]
-    func paths() -> OpenAPI.PathItem.Map
+    func responses() throws -> OpenAPI.ComponentDictionary<OpenAPI.Response>
+    func tags() throws -> [OpenAPI.Tag]
+    func paths() throws -> OpenAPI.PathItem.Map
 
     func composedDocument(
         info: OpenAPI.Document.Info,
         servers: [OpenAPI.Server]
-    ) -> OpenAPI.Document
+    ) throws -> OpenAPI.Document
+}
+
+public struct ComposeDocumentError: Swift.Error {
+    public let message: String
 }
 
 public extension Document {
 
-    //    func examples() -> OpenAPI.ComponentDictionary<OpenAPI.Example> {
-    //        [:]
-    //    }
+    static private func filterIdentifiables<T>(
+        lists: [[T]]
+    ) throws -> [String: T] {
+        var ret: [String: T] = [:]
 
-    func schemas() -> OpenAPI.ComponentDictionary<JSONSchema> {
-        components.reduce([:]) {
-            $0
-                + $1.schemas.reduce(into: [:]) {
-                    $0[$1.componentKey] = $1.openAPISchema()
+        for list in lists {
+            for item in list {
+                let itemId = item as! any Identifiable.Type
+
+                if ret[itemId.id] != nil {
+                    if itemId.override == false {
+                        throw ComposeDocumentError.init(
+                            message:
+                                "Feather OpenAPI item id is duplicated: '\(itemId.id)' (Did you forget to include override=true?)"
+                        )
+                    }
                 }
-        }
-    }
+                else {
+                    if itemId.override {
+                        throw ComposeDocumentError.init(
+                            message:
+                                "Feather OpenAPI item '\(itemId.id)' is set as override but has no parent. (Components order is ok?)"
+                        )
+                    }
+                }
 
-    func parameters() -> OpenAPI.ComponentDictionary<OpenAPI.Parameter> {
-        components.reduce(into: [:]) { into, item in
-            for parameter in item.parameters {
-                into[parameter.componentKey] = parameter.openAPIParameter()
+                ret[itemId.id] = item
             }
         }
+
+        return ret
     }
 
-    func headers() -> OpenAPI.ComponentDictionary<OpenAPI.Header> {
-        components.reduce(into: [:]) { into, item in
-            for header in item.headers {
-                into[header.componentKey] = header.openAPIHeader()
+    func schemas() throws -> OpenAPI.ComponentDictionary<JSONSchema> {
+        return
+            try Self.filterIdentifiables(
+                lists: components.map {
+                    $0.schemas
+                }
+            )
+            .reduce(into: [:]) { into, item in
+                into[item.value.componentKey] = item.value.openAPISchema()
             }
-        }
     }
 
-    func requestBodies() -> OpenAPI.ComponentDictionary<OpenAPI.Request> {
-        components.reduce(into: [:]) { into, item in
-            for response in item.requestBodies {
-                into[response.componentKey] = response.openAPIRequestBody()
+    func parameters() throws -> OpenAPI.ComponentDictionary<OpenAPI.Parameter> {
+        return
+            try Self.filterIdentifiables(
+                lists: components.map {
+                    $0.parameters
+                }
+            )
+            .reduce(into: [:]) { into, item in
+                into[item.value.componentKey] = item.value.openAPIParameter()
             }
-        }
     }
 
-    func securitySchemes()
+    func headers() throws -> OpenAPI.ComponentDictionary<OpenAPI.Header> {
+        return
+            try Self.filterIdentifiables(
+                lists: components.map {
+                    $0.headers
+                }
+            )
+            .reduce(into: [:]) { into, item in
+                into[item.value.componentKey] = item.value.openAPIHeader()
+            }
+    }
+
+    func requestBodies() throws -> OpenAPI.ComponentDictionary<OpenAPI.Request>
+    {
+        return
+            try Self.filterIdentifiables(
+                lists: components.map {
+                    $0.requestBodies
+                }
+            )
+            .reduce(into: [:]) { into, item in
+                into[item.value.componentKey] = item.value.openAPIRequestBody()
+            }
+    }
+
+    func securitySchemes() throws
         -> OpenAPI.ComponentDictionary<OpenAPI.SecurityScheme>
     {
-        components.reduce(into: [:]) { into, item in
-            for securityScheme in item.securitySchemes {
-                into[securityScheme.componentKey] =
-                    securityScheme.openAPISecurityScheme()
+        return
+            try Self.filterIdentifiables(
+                lists: components.map {
+                    $0.securitySchemes
+                }
+            )
+            .reduce(into: [:]) { into, item in
+                into[item.value.componentKey] = item.value
+                    .openAPISecurityScheme()
             }
-        }
     }
 
-    func responses() -> OpenAPI.ComponentDictionary<OpenAPI.Response> {
-        components.reduce(into: [:]) { into, item in
-            for response in item.responses {
-                into[response.componentKey] = response.openAPIResponse()
+    func responses() throws -> OpenAPI.ComponentDictionary<OpenAPI.Response> {
+        return
+            try Self.filterIdentifiables(
+                lists: components.map {
+                    $0.responses
+                }
+            )
+            .reduce(into: [:]) { into, item in
+                into[item.value.componentKey] = item.value.openAPIResponse()
             }
-        }
     }
 
     // MARK: -
 
-    func tags() -> [OpenAPI.Tag] {
-        components.reduce([]) {
-            $0 + $1.tags.map { $0.openAPITag() }
-        }
-        .sorted { lhs, rhs in
-            lhs.name < rhs.name
-        }
+    func tags() throws -> [OpenAPI.Tag] {
+        return
+            try Self.filterIdentifiables(
+                lists: components.map {
+                    $0.tags
+                }
+            )
+            .reduce(into: []) { into, item in
+                into.append(item.value.openAPITag())
+            }
+            .sorted { lhs, rhs in
+                lhs.name < rhs.name
+            }
     }
 
-    func paths() -> OpenAPI.PathItem.Map {
-
-        components.reduce(into: [:]) { into, item in
-            for pathItem in item.pathItems {
-                into[pathItem.openAPIPath] = .init(pathItem.openAPIPathItem())
+    func paths() throws -> OpenAPI.PathItem.Map {
+        return
+            try Self.filterIdentifiables(
+                lists: components.map {
+                    $0.pathItems
+                }
+            )
+            .reduce(into: [:]) { into, item in
+                into[item.value.openAPIPath] = .init(
+                    item.value.openAPIPathItem()
+                )
             }
-        }
     }
 
     func composedDocument(
         info: OpenAPI.Document.Info,
         servers: [OpenAPI.Server]
-    ) -> OpenAPI.Document {
+    ) throws -> OpenAPI.Document {
         .init(
             info: info,
             servers: servers,
-            paths: paths(),
+            paths: try paths(),
             components: .init(
-                schemas: schemas(),
-                responses: responses(),
-                parameters: parameters(),
-                //                examples: examples(),
-                requestBodies: requestBodies(),
-                headers: headers(),
-                securitySchemes: securitySchemes()
+                schemas: try schemas(),
+                responses: try responses(),
+                parameters: try parameters(),
+                requestBodies: try requestBodies(),
+                headers: try headers(),
+                securitySchemes: try securitySchemes()
             ),
-            tags: tags()
+            tags: try tags()
         )
     }
 }

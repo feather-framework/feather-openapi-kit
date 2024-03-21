@@ -18,6 +18,7 @@ extension Example.Model {
         Schemas.List.self,
         Schemas.List.Item.self,
         Schemas.CustomHeader.self,
+        Schemas.PatchOverride.self,
     ]
 
     enum Schemas {
@@ -77,6 +78,17 @@ extension Example.Model {
 
             static let description = "Lorem ipsum dolor sit amet"
             static let items: Schema.Type = Item.self
+        }
+
+        enum PatchOverride: ObjectSchema {
+            static let id = Patch.id
+            static let override = true
+
+            static let description = "example model detail object"
+
+            static let properties: [ObjectSchemaProperty] = [
+                .init("key", Key.self, required: false)
+            ]
         }
     }
 }
