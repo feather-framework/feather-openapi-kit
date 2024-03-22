@@ -38,7 +38,7 @@ public extension Document {
 
     static private func filterIdentifiables<T>(
         lists: [[T]]
-    ) throws -> [String: T] {
+    ) throws -> [T] {
         var ret: [String: T] = [:]
 
         for list in lists {
@@ -66,7 +66,7 @@ public extension Document {
             }
         }
 
-        return ret
+        return ret.sorted { $0.key < $1.key }.map { $0.value }
     }
 
     func schemas() throws -> OpenAPI.ComponentDictionary<JSONSchema> {
@@ -77,7 +77,7 @@ public extension Document {
                 }
             )
             .reduce(into: [:]) { into, item in
-                into[item.value.componentKey] = item.value.openAPISchema()
+                into[item.componentKey] = item.openAPISchema()
             }
     }
 
@@ -89,7 +89,7 @@ public extension Document {
                 }
             )
             .reduce(into: [:]) { into, item in
-                into[item.value.componentKey] = item.value.openAPIParameter()
+                into[item.componentKey] = item.openAPIParameter()
             }
     }
 
@@ -101,7 +101,7 @@ public extension Document {
                 }
             )
             .reduce(into: [:]) { into, item in
-                into[item.value.componentKey] = item.value.openAPIHeader()
+                into[item.componentKey] = item.openAPIHeader()
             }
     }
 
@@ -114,7 +114,7 @@ public extension Document {
                 }
             )
             .reduce(into: [:]) { into, item in
-                into[item.value.componentKey] = item.value.openAPIRequestBody()
+                into[item.componentKey] = item.openAPIRequestBody()
             }
     }
 
@@ -128,8 +128,7 @@ public extension Document {
                 }
             )
             .reduce(into: [:]) { into, item in
-                into[item.value.componentKey] = item.value
-                    .openAPISecurityScheme()
+                into[item.componentKey] = item.openAPISecurityScheme()
             }
     }
 
@@ -141,7 +140,7 @@ public extension Document {
                 }
             )
             .reduce(into: [:]) { into, item in
-                into[item.value.componentKey] = item.value.openAPIResponse()
+                into[item.componentKey] = item.openAPIResponse()
             }
     }
 
@@ -155,7 +154,7 @@ public extension Document {
                 }
             )
             .reduce(into: []) { into, item in
-                into.append(item.value.openAPITag())
+                into.append(item.openAPITag())
             }
             .sorted { lhs, rhs in
                 lhs.name < rhs.name
@@ -170,9 +169,7 @@ public extension Document {
                 }
             )
             .reduce(into: [:]) { into, item in
-                into[item.value.openAPIPath] = .init(
-                    item.value.openAPIPathItem()
-                )
+                into[item.openAPIPath] = .init(item.openAPIPathItem())
             }
     }
 
