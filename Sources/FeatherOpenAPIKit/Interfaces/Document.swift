@@ -57,7 +57,7 @@ public extension Document {
                     if itemId.override {
                         throw ComposeDocumentError.init(
                             message:
-                                "Feather OpenAPI item '\(itemId.id)' is set as override but has no parent. (Components order is ok?)"
+                                "Feather OpenAPI item '\(itemId.id)' is set as override but has no parent. (Are the component orders correct? Or are the IDs the same?)"
                         )
                     }
                 }

@@ -80,7 +80,7 @@ final class FeatherOpenAPIKitTests: XCTestCase {
 
         XCTAssertEqual(
             errorMessage,
-            "Feather OpenAPI item 'ExampleMissingParentItemModelKey' is set as override but has no parent. (Components order is ok?)"
+            "Feather OpenAPI item 'ExampleMissingParentItemModelKey' is set as override but has no parent. (Are the component orders correct? Or are the IDs the same?)"
         )
     }
 
