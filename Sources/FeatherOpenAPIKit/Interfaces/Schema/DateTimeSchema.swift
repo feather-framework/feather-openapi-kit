@@ -5,7 +5,7 @@ public protocol DateTimeSchema: Schema {
 }
 
 extension DateTimeSchema {
-    public static var examples: [String] { ["2023-02-10 09:20:15"] }
+    public static var examples: [String] { ["2023-04-04T09:20:15.000Z"] }
 
     public static func openAPISchema() -> OpenAPIKit.JSONSchema {
         .string(
