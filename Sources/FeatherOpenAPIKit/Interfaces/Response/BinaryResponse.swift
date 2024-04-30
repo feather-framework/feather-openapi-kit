@@ -7,8 +7,7 @@ extension BinaryResponse {
         .init(
             description: description,
             headers: openAPIHeaderMap(),
-            content: openAPIContentMap() +
-            [
+            content: openAPIContentMap() + [
                 .any: .init(schema: .string(contentEncoding: .binary))
             ]
         )
