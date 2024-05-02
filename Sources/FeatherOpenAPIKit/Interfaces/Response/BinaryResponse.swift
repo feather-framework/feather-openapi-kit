@@ -2,7 +2,7 @@ import OpenAPIKit
 
 public protocol BinaryResponse: Response {}
 
-extension BinaryResponse {
+public extension BinaryResponse {
     static func openAPIResponse() -> OpenAPI.Response {
         .init(
             description: description,
