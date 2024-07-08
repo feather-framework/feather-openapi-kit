@@ -16,7 +16,7 @@ extension BinaryBody {
             content: [
                 contentType: .init(
                     schema: .string(
-                        contentEncoding: .binary
+                        contentMediaType: .other("application/octet-stream")
                     )
                 )
             ],

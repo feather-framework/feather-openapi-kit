@@ -8,7 +8,11 @@ public extension BinaryResponse {
             description: description,
             headers: openAPIHeaderMap(),
             content: openAPIContentMap() + [
-                .any: .init(schema: .string(contentEncoding: .binary))
+                .any: .init(
+                    schema: .string(
+                        contentMediaType: .other("application/octet-stream")
+                    )
+                )
             ]
         )
     }
