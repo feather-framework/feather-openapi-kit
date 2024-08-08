@@ -168,6 +168,7 @@ public extension Document {
                     $0.pathItems
                 }
             )
+            .sorted { $0.path.value < $1.path.value }
             .reduce(into: [:]) { into, item in
                 into[item.openAPIPath] = .init(item.openAPIPathItem())
             }
