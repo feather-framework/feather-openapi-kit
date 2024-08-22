@@ -24,7 +24,7 @@ public extension OperationResponse {
     static func ok(_ response: Response.Type) -> Self {
         .init(200, response)
     }
-    
+
     static func found(_ response: Response.Type) -> Self {
         .init(302, response)
     }
