@@ -28,11 +28,11 @@ public extension OperationResponse {
     static func found(_ response: Response.Type) -> Self {
         .init(302, response)
     }
-    
+
     static func seeOther(_ response: Response.Type) -> Self {
         .init(303, response)
     }
-    
+
     static func temporaryRedirect(_ response: Response.Type) -> Self {
         .init(307, response)
     }
