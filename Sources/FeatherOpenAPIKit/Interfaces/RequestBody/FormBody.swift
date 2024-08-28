@@ -3,7 +3,6 @@
 //
 //  Created by gerp83 on 28/08/2024
 //
-    
 
 import OpenAPIKit
 
